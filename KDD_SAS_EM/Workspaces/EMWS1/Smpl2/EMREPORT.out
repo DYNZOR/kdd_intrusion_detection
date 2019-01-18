@@ -1,0 +1,64 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+Summary Statistics for Class Targets
+(maximum 500 observations printed)
+
+Data=DATA
+
+            Numeric                        Frequency
+Variable     Value     Formatted Value       Count      Percent    Label
+
+  type         .       back.                    881      0.4458    type 
+  type         .       buffer_overflow.          11      0.0056    type 
+  type         .       ftp_write.                 3      0.0015    type 
+  type         .       guess_passwd.             21      0.0106    type 
+  type         .       imap.                      5      0.0025    type 
+  type         .       ipsweep.                 498      0.2520    type 
+  type         .       land.                      8      0.0040    type 
+  type         .       loadmodule.                4      0.0020    type 
+  type         .       multihop.                  2      0.0010    type 
+  type         .       neptune.               42879     21.6993    type 
+  type         .       nmap.                     92      0.0466    type 
+  type         .       normal.                38911     19.6913    type 
+  type         .       perl.                      1      0.0005    type 
+  type         .       phf.                       2      0.0010    type 
+  type         .       pod.                     106      0.0536    type 
+  type         .       portsweep.               416      0.2105    type 
+  type         .       rootkit.                   4      0.0020    type 
+  type         .       satan.                   635      0.3213    type 
+  type         .       smurf.                112316     56.8386    type 
+  type         .       spy.                       2      0.0010    type 
+  type         .       teardrop.                392      0.1984    type 
+  type         .       warezclient.             408      0.2065    type 
+  type         .       warezmaster.               8      0.0040    type 
+
+
+Data=SAMPLE
+
+            Numeric                        Frequency
+Variable     Value     Formatted Value       Count      Percent    Label
+
+  type         .       back.                   441       0.4463    type 
+  type         .       buffer_overflow.          6       0.0061    type 
+  type         .       ftp_write.                3       0.0030    type 
+  type         .       guess_passwd.            11       0.0111    type 
+  type         .       imap.                     5       0.0051    type 
+  type         .       ipsweep.                249       0.2520    type 
+  type         .       land.                     5       0.0051    type 
+  type         .       loadmodule.               4       0.0040    type 
+  type         .       multihop.                 2       0.0020    type 
+  type         .       neptune.              21440      21.6962    type 
+  type         .       nmap.                    46       0.0465    type 
+  type         .       normal.               19456      19.6885    type 
+  type         .       perl.                     1       0.0010    type 
+  type         .       phf.                      2       0.0020    type 
+  type         .       pod.                     53       0.0536    type 
+  type         .       portsweep.              208       0.2105    type 
+  type         .       rootkit.                  4       0.0040    type 
+  type         .       satan.                  318       0.3218    type 
+  type         .       smurf.                56158      56.8292    type 
+  type         .       spy.                      2       0.0020    type 
+  type         .       teardrop.               196       0.1983    type 
+  type         .       warezclient.            204       0.2064    type 
+  type         .       warezmaster.              5       0.0051    type 

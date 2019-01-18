@@ -1,0 +1,574 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+ Role        Level         Count
+
+INPUT      BINARY            1    
+INPUT      INTERVAL          5    
+INPUT      NOMINAL           2    
+TARGET     NOMINAL           1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Model Events
+
+                                       Number
+                        Measurement      of
+  Target       Event       Level       Levels      Order          Label
+
+attack_type    NORM       NOMINAL         2      Descending    attack_type
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Predicted and decision variables
+
+Type         Variable             Label
+
+TARGET       attack_type          attack_type                
+PREDICTED    P_attack_typenorm    Predicted: attack_type=norm
+RESIDUAL     R_attack_typenorm    Residual: attack_type=norm 
+PREDICTED    P_attack_typedos     Predicted: attack_type=dos 
+RESIDUAL     R_attack_typedos     Residual: attack_type=dos  
+FROM         F_attack_type        From: attack_type          
+INTO         I_attack_type        Into: attack_type          
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+                         Optimization Start
+                        Parameter Estimates
+                                                           Gradient
+                                                          Objective
+  N Parameter                              Estimate        Function
+
+  1 count_H11                             -0.005101               0
+  2 dst_host_diff_srv_rate_H11            -0.011866               0
+  3 dst_host_same_src_port_rate_H11       -0.028897               0
+  4 dst_host_serror_rate_H11              -0.026378               0
+  5 srv_serror_rate_H11                    0.008727               0
+  6 count_H12                              0.059264               0
+  7 dst_host_diff_srv_rate_H12            -0.180532               0
+  8 dst_host_same_src_port_rate_H12        0.093970               0
+  9 dst_host_serror_rate_H12               0.067908               0
+ 10 srv_serror_rate_H12                    0.020853               0
+ 11 count_H13                             -0.171325               0
+ 12 dst_host_diff_srv_rate_H13             0.053271               0
+ 13 dst_host_same_src_port_rate_H13       -0.076451               0
+ 14 dst_host_serror_rate_H13               0.201651               0
+ 15 srv_serror_rate_H13                    0.003728               0
+ 16 logged_in0_H11                         0.114403               0
+ 17 logged_in0_H12                         0.071782               0
+ 18 logged_in0_H13                         0.036079               0
+ 19 protocolicmp_H11                       0.101180               0
+ 20 protocoltcp_H11                        0.086410               0
+ 21 serviceIRC_H11                         0.021525               0
+ 22 serviceX11_H11                         0.073802               0
+ 23 serviceZ39_50_H11                     -0.122332               0
+ 24 serviceauth_H11                        0.058218               0
+ 25 servicebgp_H11                         0.174799               0
+ 26 servicecourier_H11                     0.218652               0
+ 27 servicecsnet_ns_H11                   -0.134203               0
+ 28 servicectf_H11                        -0.184710               0
+ 29 servicedaytime_H11                    -0.163492               0
+ 30 servicediscard_H11                    -0.132080               0
+ 31 servicedomain_H11                      0.043479               0
+ 32 servicedomain_u_H11                   -0.132406               0
+ 33 serviceecho_H11                        0.060051               0
+ 34 serviceeco_i_H11                      -0.004121               0
+ 35 serviceecr_i_H11                      -0.053898               0
+ 36 serviceefs_H11                        -0.091761               0
+ 37 serviceexec_H11                       -0.093501               0
+ 38 servicefinger_H11                     -0.061322               0
+ 39 serviceftp_H11                        -0.061995               0
+ 40 serviceftp_data_H11                   -0.065210               0
+ 41 servicegopher_H11                     -0.123156               0
+ 42 servicehostnames_H11                   0.068561               0
+ 43 servicehttp_H11                       -0.092190               0
+ 44 servicehttp_443_H11                    0.191745               0
+ 45 serviceimap4_H11                       0.047736               0
+ 46 serviceiso_tsap_H11                   -0.169925               0
+ 47 serviceklogin_H11                     -0.042699               0
+ 48 servicekshell_H11                      0.242719               0
+ 49 serviceldap_H11                        0.035101               0
+ 50 servicelink_H11                       -0.179004               0
+ 51 servicelogin_H11                      -0.200528               0
+ 52 servicemtp_H11                         0.072434               0
+ 53 servicename_H11                       -0.056994               0
+ 54 servicenetbios_dgm_H11                -0.288590               0
+ 55 servicenetbios_ns_H11                  0.036264               0
+ 56 servicenetbios_ssn_H11                 0.022949               0
+ 57 servicenetstat_H11                    -0.122391               0
+ 58 servicennsp_H11                       -0.140321               0
+ 59 servicenntp_H11                       -0.022305               0
+ 60 servicentp_u_H11                       0.168449               0
+ 61 serviceother_H11                      -0.026129               0
+ 62 servicepop_2_H11                       0.047134               0
+ 63 servicepop_3_H11                       0.154685               0
+ 64 serviceprinter_H11                     0.095306               0
+ 65 serviceprivate_H11                    -0.100396               0
+ 66 servicered_i_H11                       0.028717               0
+ 67 serviceremote_job_H11                  0.123557               0
+ 68 servicerje_H11                        -0.094623               0
+ 69 serviceshell_H11                       0.182363               0
+ 70 servicesmtp_H11                       -0.065181               0
+ 71 servicesql_net_H11                    -0.008468               0
+ 72 servicessh_H11                        -0.056149               0
+ 73 servicesunrpc_H11                     -0.009800               0
+ 74 servicesupdup_H11                      0.125249               0
+ 75 servicesystat_H11                      0.039083               0
+ 76 servicetelnet_H11                      0.082790               0
+ 77 servicetftp_u_H11                     -0.208368               0
+ 78 servicetime_H11                       -0.107381               0
+ 79 serviceurh_i_H11                       0.087720               0
+ 80 serviceurp_i_H11                       0.008065               0
+ 81 serviceuucp_H11                       -0.047489               0
+ 82 serviceuucp_path_H11                  -0.076206               0
+ 83 servicevmnet_H11                       0.069531               0
+ 84 protocolicmp_H12                      -0.005942               0
+ 85 protocoltcp_H12                       -0.068128               0
+ 86 serviceIRC_H12                        -0.208163               0
+ 87 serviceX11_H12                        -0.130027               0
+ 88 serviceZ39_50_H12                     -0.044263               0
+ 89 serviceauth_H12                        0.076437               0
+ 90 servicebgp_H12                         0.126236               0
+ 91 servicecourier_H12                     0.074646               0
+ 92 servicecsnet_ns_H12                    0.024072               0
+ 93 servicectf_H12                        -0.151691               0
+ 94 servicedaytime_H12                     0.042179               0
+ 95 servicediscard_H12                    -0.027609               0
+ 96 servicedomain_H12                     -0.010466               0
+ 97 servicedomain_u_H12                    0.119896               0
+ 98 serviceecho_H12                       -0.046482               0
+ 99 serviceeco_i_H12                       0.224551               0
+100 serviceecr_i_H12                       0.171718               0
+101 serviceefs_H12                         0.059983               0
+102 serviceexec_H12                       -0.037491               0
+103 servicefinger_H12                     -0.070591               0
+104 serviceftp_H12                        -0.054805               0
+105 serviceftp_data_H12                    0.076619               0
+106 servicegopher_H12                      0.272448               0
+107 servicehostnames_H12                   0.125072               0
+108 servicehttp_H12                       -0.076599               0
+109 servicehttp_443_H12                   -0.090760               0
+110 serviceimap4_H12                       0.144978               0
+111 serviceiso_tsap_H12                   -0.197043               0
+112 serviceklogin_H12                     -0.195176               0
+113 servicekshell_H12                     -0.099729               0
+114 serviceldap_H12                       -0.109255               0
+115 servicelink_H12                       -0.084360               0
+116 servicelogin_H12                       0.091817               0
+117 servicemtp_H12                         0.075199               0
+118 servicename_H12                        0.201454               0
+119 servicenetbios_dgm_H12                 0.041929               0
+120 servicenetbios_ns_H12                  0.039609               0
+121 servicenetbios_ssn_H12                -0.033613               0
+122 servicenetstat_H12                     0.144351               0
+123 servicennsp_H12                        0.111703               0
+124 servicenntp_H12                        0.005258               0
+125 servicentp_u_H12                       0.080810               0
+126 serviceother_H12                       0.077386               0
+127 servicepop_2_H12                      -0.012356               0
+128 servicepop_3_H12                       0.155674               0
+129 serviceprinter_H12                     0.041990               0
+130 serviceprivate_H12                    -0.121345               0
+131 servicered_i_H12                      -0.051335               0
+132 serviceremote_job_H12                 -0.085295               0
+133 servicerje_H12                        -0.078332               0
+134 serviceshell_H12                      -0.180296               0
+135 servicesmtp_H12                        0.028028               0
+136 servicesql_net_H12                    -0.008383               0
+137 servicessh_H12                         0.014568               0
+138 servicesunrpc_H12                      0.044185               0
+139 servicesupdup_H12                      0.120577               0
+140 servicesystat_H12                      0.146246               0
+141 servicetelnet_H12                      0.100253               0
+142 servicetftp_u_H12                     -0.005416               0
+143 servicetime_H12                       -0.052839               0
+144 serviceurh_i_H12                       0.118922               0
+145 serviceurp_i_H12                      -0.012684               0
+146 serviceuucp_H12                       -0.011034               0
+147 serviceuucp_path_H12                   0.040856               0
+148 servicevmnet_H12                      -0.081260               0
+149 protocolicmp_H13                      -0.142359               0
+150 protocoltcp_H13                       -0.148244               0
+151 serviceIRC_H13                        -0.218107               0
+152 serviceX11_H13                        -0.347540               0
+153 serviceZ39_50_H13                     -0.231496               0
+154 serviceauth_H13                        0.084557               0
+155 servicebgp_H13                        -0.084381               0
+156 servicecourier_H13                     0.062034               0
+157 servicecsnet_ns_H13                    0.037266               0
+158 servicectf_H13                         0.164864               0
+159 servicedaytime_H13                    -0.239828               0
+160 servicediscard_H13                    -0.129896               0
+161 servicedomain_H13                     -0.145510               0
+162 servicedomain_u_H13                   -0.160867               0
+163 serviceecho_H13                       -0.345056               0
+164 serviceeco_i_H13                      -0.057258               0
+165 serviceecr_i_H13                       0.187847               0
+166 serviceefs_H13                        -0.065221               0
+167 serviceexec_H13                        0.065174               0
+168 servicefinger_H13                     -0.049256               0
+169 serviceftp_H13                         0.008117               0
+170 serviceftp_data_H13                   -0.258746               0
+171 servicegopher_H13                     -0.132683               0
+172 servicehostnames_H13                  -0.021025               0
+173 servicehttp_H13                       -0.041689               0
+174 servicehttp_443_H13                    0.110579               0
+175 serviceimap4_H13                      -0.096149               0
+176 serviceiso_tsap_H13                   -0.020205               0
+177 serviceklogin_H13                     -0.116669               0
+178 servicekshell_H13                      0.075654               0
+179 serviceldap_H13                       -0.056977               0
+180 servicelink_H13                       -0.128141               0
+181 servicelogin_H13                       0.122840               0
+182 servicemtp_H13                         0.131476               0
+183 servicename_H13                        0.031967               0
+184 servicenetbios_dgm_H13                 0.090746               0
+185 servicenetbios_ns_H13                  0.002061               0
+186 servicenetbios_ssn_H13                 0.043454               0
+187 servicenetstat_H13                    -0.044567               0
+188 servicennsp_H13                        0.108737               0
+189 servicenntp_H13                        0.110315               0
+190 servicentp_u_H13                      -0.056639               0
+191 serviceother_H13                      -0.054385               0
+192 servicepop_2_H13                       0.190401               0
+193 servicepop_3_H13                      -0.208388               0
+194 serviceprinter_H13                     0.123851               0
+195 serviceprivate_H13                    -0.088355               0
+196 servicered_i_H13                       0.064165               0
+197 serviceremote_job_H13                 -0.074556               0
+198 servicerje_H13                         0.161672               0
+199 serviceshell_H13                      -0.004059               0
+200 servicesmtp_H13                        0.016103               0
+201 servicesql_net_H13                    -0.030610               0
+202 servicessh_H13                         0.012861               0
+203 servicesunrpc_H13                     -0.112079               0
+204 servicesupdup_H13                     -0.062112               0
+205 servicesystat_H13                     -0.094327               0
+206 servicetelnet_H13                     -0.094338               0
+207 servicetftp_u_H13                      0.023890               0
+208 servicetime_H13                       -0.051014               0
+209 serviceurh_i_H13                       0.037301               0
+210 serviceurp_i_H13                      -0.147334               0
+211 serviceuucp_H13                       -0.106633               0
+212 serviceuucp_path_H13                   0.137439               0
+213 servicevmnet_H13                       0.045308               0
+214 BIAS_H11                               0.471403               0
+215 BIAS_H12                              -2.118440               0
+216 BIAS_H13                               0.959421               0
+217 H11_attack_typenorm                           0        0.018119
+218 H12_attack_typenorm                           0        0.004096
+219 H13_attack_typenorm                           0       -0.012457
+220 BIAS_attack_typenorm                  -1.865733    -6.58887E-14
+
+Value of Objective Function = 0.3939879325
+
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+Dual Quasi-Newton Optimization
+
+
+Minimum Iterations                                0
+Maximum Iterations                               50
+Maximum Function Calls                   2147483647
+Maximum CPU Time                              14400
+ABSGCONV Gradient Criterion                 0.00001
+GCONV Gradient Criterion                       1E-8
+ABSFCONV Function Criterion                       0
+FCONV Function Criterion                     0.0001
+FCONV2 Function Criterion                         0
+FSIZE Parameter                                   0
+ABSXCONV Parameter Change Criterion               0
+XCONV Parameter Change Criterion                  0
+XSIZE Parameter                                   0
+ABSCONV Function Criterion             0.0021535576
+Line Search Method                                2
+Starting Alpha for Line Search                    1
+Line Search Precision LSPRECISION               0.4
+DAMPSTEP Parameter for Line Search                .
+Singularity Tolerance (SINGULAR)               1E-8
+
+Dual Quasi-Newton Optimization
+
+Dual Broyden - Fletcher - Goldfarb - Shanno Update (DBFGS)
+
+Parameter Estimates             220
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       0.3939879325
+Max Abs Gradient Element                 0.0181194242                                                       
+
+
+                                                                 Objective     Max Abs                Slope of
+                     Function         Active        Objective     Function    Gradient       Step       Search
+Iter     Restarts       Calls    Constraints         Function       Change     Element       Size    Direction
+
+   1            0           8              0          0.34393       0.0501      0.6295      2.000      -0.0500
+   2            0          13              0          0.01960       0.3243      0.0721     0.0138       -229.5
+   3            0          16              0          0.00850       0.0111     0.00513     0.0270       -3.476
+   4            0          18              0          0.00739      0.00111      0.0193      1.000      -0.0087
+   5            0          22              0        0.0007085      0.00668     0.00130      0.927      -0.0142
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                     24
+Gradient Calls                                     10  Active Constraints                                  0
+Objective Function                       0.0007085186  Max Abs Gradient Element                 0.0013039391
+Slope of Search Direction                -0.014243404                                                       
+
+Convergence criterion (ABSCONV=0.0021535576) satisfied.                                           
+
+NOTE: At least one element of the gradient is greater than 1e-3.
+
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+                        Optimization Results
+                        Parameter Estimates
+                                                           Gradient
+                                                          Objective
+  N Parameter                              Estimate        Function
+
+  1 count_H11                              1.394198        0.001304
+  2 dst_host_diff_srv_rate_H11            -0.003514       -0.000911
+  3 dst_host_same_src_port_rate_H11        0.442170        0.001297
+  4 dst_host_serror_rate_H11               0.787507        0.000327
+  5 srv_serror_rate_H11                    0.822854        0.000394
+  6 count_H12                              0.219118     0.000008760
+  7 dst_host_diff_srv_rate_H12            -0.151242    -0.000012319
+  8 dst_host_same_src_port_rate_H12        0.058738     0.000018494
+  9 dst_host_serror_rate_H12               0.098833     0.000001856
+ 10 srv_serror_rate_H12                    0.051881     0.000002408
+ 11 count_H13                             -1.272823    -0.000089920
+ 12 dst_host_diff_srv_rate_H13            -0.036375     0.000047998
+ 13 dst_host_same_src_port_rate_H13       -0.179330    -0.000071336
+ 14 dst_host_serror_rate_H13               0.008352    -0.000012391
+ 15 srv_serror_rate_H13                   -0.189404    -0.000014116
+ 16 logged_in0_H11                         1.430816       -0.000781
+ 17 logged_in0_H12                         0.029847    -0.000004833
+ 18 logged_in0_H13                        -0.170100     0.000028318
+ 19 protocolicmp_H11                       1.238418       -0.000856
+ 20 protocoltcp_H11                        0.307143    -0.000037461
+ 21 serviceIRC_H11                         0.021427    3.094401E-11
+ 22 serviceX11_H11                         0.073224    3.094401E-11
+ 23 serviceZ39_50_H11                     -0.122039    -4.43288E-13
+ 24 serviceauth_H11                        0.057822    2.879372E-11
+ 25 servicebgp_H11                         0.174949    1.257699E-11
+ 26 servicecourier_H11                     0.218800    -9.00404E-12
+ 27 servicecsnet_ns_H11                   -0.133704    -5.44647E-11
+ 28 servicectf_H11                        -0.184228    2.516139E-11
+ 29 servicedaytime_H11                    -0.163041    2.825712E-11
+ 30 servicediscard_H11                    -0.131643    2.624535E-11
+ 31 servicedomain_H11                      0.043713    1.168888E-11
+ 32 servicedomain_u_H11                   -0.166295    3.094401E-11
+ 33 serviceecho_H11                        0.060246    2.868222E-11
+ 34 serviceeco_i_H11                      -0.239122    3.094401E-11
+ 35 serviceecr_i_H11                       0.991627       -0.000818
+ 36 serviceefs_H11                        -0.091390    -7.36384E-11
+ 37 serviceexec_H11                       -0.093115    -1.79095E-10
+ 38 servicefinger_H11                     -0.062289    -1.213857E-9
+ 39 serviceftp_H11                        -0.061661    7.822409E-12
+ 40 serviceftp_data_H11                   -0.135182    -9.50239E-10
+ 41 servicegopher_H11                     -0.122704    -1.36996E-11
+ 42 servicehostnames_H11                   0.068758     2.98425E-11
+ 43 servicehttp_H11                       -0.460117    -5.598073E-8
+ 44 servicehttp_443_H11                    0.191888    -1.25155E-11
+ 45 serviceimap4_H11                       0.047993     -1.2872E-11
+ 46 serviceiso_tsap_H11                   -0.169462    1.419437E-12
+ 47 serviceklogin_H11                     -0.042370    -1.92441E-10
+ 48 servicekshell_H11                      0.242827    -2.03247E-11
+ 49 serviceldap_H11                        0.035340    -8.39114E-11
+ 50 servicelink_H11                       -0.178543    -1.51878E-10
+ 51 servicelogin_H11                      -0.199985    -1.11401E-10
+ 52 servicemtp_H11                         0.072647    4.551738E-12
+ 53 servicename_H11                       -0.056722    -1.87663E-11
+ 54 servicenetbios_dgm_H11                -0.287981     1.89127E-11
+ 55 servicenetbios_ns_H11                  0.036489    2.582234E-11
+ 56 servicenetbios_ssn_H11                 0.023188    2.912515E-11
+ 57 servicenetstat_H11                    -0.122057    9.825446E-12
+ 58 servicennsp_H11                       -0.139902    -1.84728E-10
+ 59 servicenntp_H11                       -0.021985    2.111703E-11
+ 60 servicentp_u_H11                       0.165646    3.094401E-11
+ 61 serviceother_H11                      -0.259749     0.000037384
+ 62 servicepop_2_H11                       0.047391    2.114196E-11
+ 63 servicepop_3_H11                       0.154592    2.329856E-11
+ 64 serviceprinter_H11                     0.095507    -3.98978E-11
+ 65 serviceprivate_H11                     0.224669    -1.364177E-8
+ 66 servicered_i_H11                       0.028677    3.094401E-11
+ 67 serviceremote_job_H11                  0.123757     2.89239E-11
+ 68 servicerje_H11                        -0.094250    2.091927E-11
+ 69 serviceshell_H11                       0.182534    -5.12759E-12
+ 70 servicesmtp_H11                       -0.132686    -1.971758E-9
+ 71 servicesql_net_H11                    -0.008148    2.678642E-11
+ 72 servicessh_H11                        -0.055853    -5.56965E-11
+ 73 servicesunrpc_H11                     -0.009528    2.412877E-11
+ 74 servicesupdup_H11                      0.125396    2.767861E-11
+ 75 servicesystat_H11                      0.039339    2.966402E-11
+ 76 servicetelnet_H11                      0.082591    -5.60313E-10
+ 77 servicetftp_u_H11                     -0.208406    3.094401E-11
+ 78 servicetime_H11                       -0.106973    2.747087E-11
+ 79 serviceurh_i_H11                       0.087568    3.094401E-11
+ 80 serviceurp_i_H11                       0.005565    3.094401E-11
+ 81 serviceuucp_H11                       -0.047191    -2.66912E-11
+ 82 serviceuucp_path_H11                  -0.075862    -1.41027E-11
+ 83 servicevmnet_H11                       0.069750    2.500538E-11
+ 84 protocolicmp_H12                      -0.033232    -0.000008295
+ 85 protocoltcp_H12                       -0.058666    -0.000001750
+ 86 serviceIRC_H12                        -0.208163    5.393758E-11
+ 87 serviceX11_H12                        -0.130030    5.393758E-11
+ 88 serviceZ39_50_H12                     -0.044260    4.929775E-11
+ 89 serviceauth_H12                        0.076435    5.081327E-11
+ 90 servicebgp_H12                         0.126238    4.680788E-11
+ 91 servicecourier_H12                     0.074648    9.471145E-12
+ 92 servicecsnet_ns_H12                    0.024077    3.638212E-11
+ 93 servicectf_H12                        -0.151688    5.044142E-11
+ 94 servicedaytime_H12                     0.042183    5.236367E-11
+ 95 servicediscard_H12                    -0.027606    5.122822E-11
+ 96 servicedomain_H12                     -0.010463    4.879138E-11
+ 97 servicedomain_u_H12                    0.119389    5.393758E-11
+ 98 serviceecho_H12                       -0.046480    5.292038E-11
+ 99 serviceeco_i_H12                       0.216614    5.393758E-11
+100 serviceecr_i_H12                       0.142462    -0.000006557
+101 serviceefs_H12                         0.059987    1.817159E-11
+102 serviceexec_H12                       -0.037488    -1.15509E-11
+103 servicefinger_H12                     -0.070604    -2.07241E-10
+104 serviceftp_H12                        -0.054802    4.761911E-11
+105 serviceftp_data_H12                    0.076056    -2.25753E-10
+106 servicegopher_H12                      0.272454     4.13977E-11
+107 servicehostnames_H12                   0.125075    5.209801E-11
+108 servicehttp_H12                       -0.079049    -4.213681E-9
+109 servicehttp_443_H12                   -0.090758    1.640254E-11
+110 serviceimap4_H12                       0.144981    4.164013E-11
+111 serviceiso_tsap_H12                   -0.197041    4.878597E-11
+112 serviceklogin_H12                     -0.195174    1.727932E-11
+113 servicekshell_H12                     -0.099728     1.66074E-11
+114 serviceldap_H12                       -0.109253    2.759753E-11
+115 servicelink_H12                       -0.084357    3.917499E-11
+116 servicelogin_H12                       0.091822    -2.88665E-11
+117 servicemtp_H12                         0.075201    4.190838E-11
+118 servicename_H12                        0.201458    4.179253E-11
+119 servicenetbios_dgm_H12                 0.041934    4.794944E-11
+120 servicenetbios_ns_H12                  0.039612     5.03265E-11
+121 servicenetbios_ssn_H12                -0.033610    5.180911E-11
+122 servicenetstat_H12                     0.144355    4.691792E-11
+123 servicennsp_H12                        0.111707    -1.84336E-11
+124 servicenntp_H12                        0.005261    4.515516E-11
+125 servicentp_u_H12                       0.080764    5.393758E-11
+126 serviceother_H12                       0.068531     0.000001737
+127 servicepop_2_H12                      -0.012354    4.616777E-11
+128 servicepop_3_H12                       0.155675    5.065974E-11
+129 serviceprinter_H12                     0.041993    -1.92701E-12
+130 serviceprivate_H12                    -0.119252    -6.278394E-9
+131 servicered_i_H12                      -0.051335    5.393758E-11
+132 serviceremote_job_H12                 -0.085293    5.190767E-11
+133 servicerje_H12                        -0.078329     4.69466E-11
+134 serviceshell_H12                      -0.180295    3.191134E-11
+135 servicesmtp_H12                        0.027811     -2.3595E-10
+136 servicesql_net_H12                    -0.008380    5.076931E-11
+137 servicessh_H12                         0.014571    3.975131E-11
+138 servicesunrpc_H12                      0.044187    5.124979E-11
+139 servicesupdup_H12                      0.120579    4.951653E-11
+140 servicesystat_H12                      0.146249    5.227581E-11
+141 servicetelnet_H12                      0.100255     -1.9569E-10
+142 servicetftp_u_H12                     -0.005416    5.393758E-11
+143 servicetime_H12                       -0.052836    5.153171E-11
+144 serviceurh_i_H12                       0.118920    5.393758E-11
+145 serviceurp_i_H12                      -0.012718    5.393758E-11
+146 serviceuucp_H12                       -0.011031    3.072996E-11
+147 serviceuucp_path_H12                   0.040859    3.558139E-11
+148 servicevmnet_H12                      -0.081258    5.096857E-11
+149 protocolicmp_H13                      -0.562728     0.000071633
+150 protocoltcp_H13                       -0.258915     0.000021762
+151 serviceIRC_H13                        -0.218077    -1.58966E-10
+152 serviceX11_H13                        -0.347395    -1.58966E-10
+153 serviceZ39_50_H13                     -0.231562    -1.24163E-10
+154 serviceauth_H13                        0.084690    -1.44605E-10
+155 servicebgp_H13                        -0.084420    -1.31252E-10
+156 servicecourier_H13                     0.062007    4.574693E-11
+157 servicecsnet_ns_H13                    0.037201    -8.25442E-11
+158 servicectf_H13                         0.164816    -1.32086E-10
+159 servicedaytime_H13                    -0.239926    -1.44021E-10
+160 servicediscard_H13                    -0.129975    -1.33563E-10
+161 servicedomain_H13                     -0.145554     -1.2935E-10
+162 servicedomain_u_H13                   -0.155348    -1.58966E-10
+163 serviceecho_H13                       -0.345123    -1.47745E-10
+164 serviceeco_i_H13                       0.133894    -1.58966E-10
+165 serviceecr_i_H13                      -0.223436     0.000049940
+166 serviceefs_H13                        -0.065276    2.910567E-11
+167 serviceexec_H13                        0.065130    1.659126E-10
+168 servicefinger_H13                     -0.048338    4.836749E-10
+169 serviceftp_H13                         0.008066    -1.17069E-10
+170 serviceftp_data_H13                   -0.236497    6.459538E-10
+171 servicegopher_H13                     -0.132766    -1.22852E-10
+172 servicehostnames_H13                  -0.021064    -1.47666E-10
+173 servicehttp_H13                        0.077713    6.1462593E-9
+174 servicehttp_443_H13                    0.110556    6.445954E-11
+175 serviceimap4_H13                      -0.096205    -1.12503E-10
+176 serviceiso_tsap_H13                   -0.020271    -1.14465E-10
+177 serviceklogin_H13                     -0.116724    1.004466E-10
+178 servicekshell_H13                      0.075633    6.334581E-11
+179 serviceldap_H13                       -0.057020     1.92148E-11
+180 servicelink_H13                       -0.128220    -7.91778E-11
+181 servicelogin_H13                       0.122791    1.658129E-10
+182 servicemtp_H13                         0.131444    -1.14734E-10
+183 servicename_H13                        0.031925    -1.23731E-10
+184 servicenetbios_dgm_H13                 0.090682    -1.28403E-10
+185 servicenetbios_ns_H13                  0.002020    -1.37447E-10
+186 servicenetbios_ssn_H13                 0.043414    -1.42639E-10
+187 servicenetstat_H13                    -0.044620      -1.251E-10
+188 servicennsp_H13                        0.108694    9.204901E-11
+189 servicenntp_H13                        0.110273    -1.11081E-10
+190 servicentp_u_H13                      -0.056181    -1.58966E-10
+191 serviceother_H13                       0.133270    -0.000021692
+192 servicepop_2_H13                       0.190368    -1.16083E-10
+193 servicepop_3_H13                      -0.208319    -1.41408E-10
+194 serviceprinter_H13                     0.123824    8.177935E-11
+195 serviceprivate_H13                    -0.140531    5.7368237E-8
+196 servicered_i_H13                       0.064170    -1.58966E-10
+197 serviceremote_job_H13                 -0.074603    -1.39635E-10
+198 servicerje_H13                         0.161631    -1.13606E-10
+199 serviceshell_H13                      -0.004092    4.312137E-11
+200 servicesmtp_H13                        0.025984    1.206269E-10
+201 servicesql_net_H13                    -0.030667    -1.34625E-10
+202 servicessh_H13                         0.012817    -1.04032E-10
+203 servicesunrpc_H13                     -0.112136    -1.42296E-10
+204 servicesupdup_H13                     -0.062147    -1.33784E-10
+205 servicesystat_H13                     -0.094382    -1.47589E-10
+206 servicetelnet_H13                     -0.094220    2.891695E-10
+207 servicetftp_u_H13                      0.023891    -1.58966E-10
+208 servicetime_H13                       -0.051081    -1.38067E-10
+209 serviceurh_i_H13                       0.037343    -1.58966E-10
+210 serviceurp_i_H13                      -0.146182    -1.58966E-10
+211 serviceuucp_H13                       -0.106683    -8.41282E-12
+212 serviceuucp_path_H13                   0.137399    -8.39193E-11
+213 servicevmnet_H13                       0.045270    -1.40981E-10
+214 BIAS_H11                               0.841582       -0.000781
+215 BIAS_H12                              -2.166086    -0.000004833
+216 BIAS_H13                               1.032682     0.000028318
+217 H11_attack_typenorm                 -121.580618     0.000009942
+218 H12_attack_typenorm                  -27.285929    -0.000013622
+219 H13_attack_typenorm                   83.390454     0.000013555
+220 BIAS_attack_typenorm                  -2.052872     0.000013710
+
+Value of Objective Function = 0.0007085186
+

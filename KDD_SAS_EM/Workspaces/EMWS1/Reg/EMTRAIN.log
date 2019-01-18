@@ -1,0 +1,401 @@
+*------------------------------------------------------------*
+* Training Log
+Date:                03 April 2017
+Time:                23:02:55 o'clock
+*------------------------------------------------------------*
+10866  proc freq data=EMWS1.Reg_VariableSet noprint;
+10867  table ROLE*LEVEL/out=WORK.RegMETA;
+10868  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.REG_VARIABLESET.
+NOTE: The data set WORK.REGMETA has 4 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+10869  proc print data=WORK.RegMETA label noobs;
+10870  var ROLE LEVEL COUNT;
+10871  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+10872  title9 ' ';
+10873  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+10874  run;
+
+NOTE: There were 4 observations read from the data set WORK.REGMETA.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+10875  title10;
+
+10876  %let EMNORLEN = %DMNORLEN;
+EMWS1.Stat_TRAIN EMWS1.Stat_TRAIN 
+EMWS1.Stat_TRAIN EMWS1.Stat_TRAIN EMWS1 Stat_TRAIN 
+EMWS1.Stat_TRAIN EMWS1.Stat_TRAIN 
+EMWS1.Stat_TRAIN EMWS1.Stat_TRAIN EMWS1 Stat_TRAIN 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL setMetaData >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL setMetaData >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >> 
+>>>>>>>>>>>>>> TARGET(   USE='Y' 
+                         REPORT='N' 
+                         NAME='attack_type' 
+                         ROLE='TARGET' 
+                         LEVEL='NOMINAL' 
+                         ORDER='' 
+                         CREATOR='' 
+                         FORMATTYPE='CATEGORY' 
+                         FAMILY='' 
+                         LOWERLIMIT=. 
+                         UPPERLIMIT=. 
+                         DISTRIBUTION='' 
+                         COMMENT='' 
+                         PRICE=. 
+                         TYPE='C' 
+                         LABEL='attack_type' 
+                         FORMAT='$5.' 
+                         INFORMAT='$5.' 
+                         INDEX='N' 
+                         INDEXTYPE='NONE' 
+                         LENGTH=5 
+                      )[11175] 
+PERFORMANCE  DETAILS
+WORK.EM_DMDB WORK.EM_DMDB 
+WORK.EM_DMDB WORK.EM_DMDB WORK EM_DMDB 
+10973  data WORK.Reg_EVENT(KEEP=VARIABLE LABEL LEVEL EVENT NUMLEVELS ORDER);
+10974  length ORDER $20;
+10975  label VARIABLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_target_vlabel,  NOQUOTE))" EVENT = "%sysfunc(sasmsg(sashelp.dmine, assmt_event_vlabel, NOQUOTE))" NUMLEVELS = "%sysfunc(sasmsg(sashelp.dmine, rpt_numcat_vlabel, NOQUOTE))" LEVEL =
+10976     "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" ORDER = "%sysfunc(sasmsg(sashelp.dmine, meta_order_vlabel, NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel, NOQUOTE))";
+10977  set EMWS1.REG_ATTACK_TYPE_DM( where=(_TYPE_="TARGET"));
+10978  NumLevels=6;
+10979  select(upcase(ORDER));
+10980  when('DESC') ORDER = 'Descending';
+10981  when('ASC') ORDER = 'Ascending';
+10982  when('FMTDESC') ORDER = 'Formatted Descending';
+10983  when('FMTASC') ORDER = 'Formatted Ascending';
+10984  otherwise ORDER = 'Descending';
+10985  end;
+10986  output;
+10987  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.REG_ATTACK_TYPE_DM.
+      WHERE _TYPE_='TARGET';
+NOTE: The data set WORK.REG_EVENT has 1 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+10988  title9 ' ';
+10989  proc print data=WORK.Reg_EVENT noobs label;
+10990  var VARIABLE EVENT LEVEL NUMLEVELS ORDER LABEL;
+10991  title9 ' ';
+10992  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_modelEvent_title  , NOQUOTE))";
+10993  run;
+
+NOTE: There were 1 observations read from the data set WORK.REG_EVENT.
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+10994  title10;
+
+"No decisions defined for target "attack_type"." 
+10995  proc print data = EMWS1.Reg_attack_type_DM noobs label;
+10996  var _type_ variable label;
+10997  where _type_ ^in('MATRIX', 'DECISION', 'TRAINPRIOR', 'DATAPRIOR', 'DECPRIOR');
+10998  label _TYPE_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_type_vlabel,     NOQUOTE))" VARIABLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel, NOQUOTE))";
+10999  title9 ' ';
+11000  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_predDecVars_title  , NOQUOTE))";
+11001  run;
+
+NOTE: There were 15 observations read from the data set EMWS1.REG_ATTACK_TYPE_DM.
+      WHERE _type_ not in ('DATAPRIOR', 'DECISION', 'DECPRIOR', 'MATRIX', 'TRAINPRIOR');
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11002  title10;
+
+11012  data WORK.M1YA7JHF;
+11013  set WORK.M1YA7JHF end=eof;
+11014  output;
+11015  if eof then do;
+11016  NAME="";
+11017  ROLE="COST";
+11018  LEVEL="INTERVAL";
+11019  TYPE="N";
+11020  output;
+11021  end;
+11022  run;
+
+NOTE: There were 40 observations read from the data set WORK.M1YA7JHF.
+NOTE: The data set WORK.M1YA7JHF has 41 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: There were 6 observations read from the data set EMWS1.REG_ATTACK_TYPE_DD.
+NOTE: The data set WORK.ATTACK_TYPE has 6 observations and 11 variables.
+NOTE: There were 6 observations read from the data set EMWS1.REG_ATTACK_TYPE_DD.
+NOTE: The data set WORK.ATTACK_TYPE has 6 observations and 11 variables.
+11023  *------------------------------------------------------------*;
+11024  * Reg: Create decision matrix;
+11025  *------------------------------------------------------------*;
+11026  data WORK.attack_type(label="attack_type");
+11027    length   attack_type                      $  32
+11028             COUNT                                8
+11029             DATAPRIOR                            8
+11030             TRAINPRIOR                           8
+11031             DECPRIOR                             8
+11032             DECISION1                            8
+11033             DECISION2                            8
+11034             DECISION3                            8
+11035             DECISION4                            8
+11036             DECISION5                            8
+11037             DECISION6                            8
+11038             ;
+11039  
+11040    label    COUNT="Level Counts"
+11041             DATAPRIOR="Data Proportions"
+11042             TRAINPRIOR="Training Proportions"
+11043             DECPRIOR="Decision Priors"
+11044             DECISION1="U2R"
+11045             DECISION2="R2L"
+11046             DECISION3="PROBE"
+11047             DECISION4="NORM"
+11048             DECISION5="DOS"
+11049             DECISION6="0"
+11050             ;
+11051  attack_type="U2R"; COUNT=52; DATAPRIOR=0.00010525868333; TRAINPRIOR=0.00010525868333; DECPRIOR=.; DECISION1=1; DECISION2=0; DECISION3=0; DECISION4=0; DECISION5=0; DECISION6=0;
+11052  output;
+11053  attack_type="R2L"; COUNT=1126; DATAPRIOR=0.00227925533529; TRAINPRIOR=0.00227925533529; DECPRIOR=.; DECISION1=0; DECISION2=1; DECISION3=0; DECISION4=0; DECISION5=0; DECISION6=0;
+11054  output;
+11055  attack_type="PROBE"; COUNT=4107; DATAPRIOR=0.00831341177804; TRAINPRIOR=0.00831341177804; DECPRIOR=.; DECISION1=0; DECISION2=0; DECISION3=1; DECISION4=0; DECISION5=0; DECISION6=0;
+11056  output;
+11057  attack_type="NORM"; COUNT=97278; DATAPRIOR=0.1969106576441; TRAINPRIOR=0.1969106576441; DECPRIOR=.; DECISION1=0; DECISION2=0; DECISION3=0; DECISION4=1; DECISION5=0; DECISION6=0;
+11058  output;
+11059  attack_type="DOS"; COUNT=391437; DATAPRIOR=0.79234890824479; TRAINPRIOR=0.79234890824479; DECPRIOR=.; DECISION1=0; DECISION2=0; DECISION3=0; DECISION4=0; DECISION5=1; DECISION6=0;
+11060  output;
+11061  attack_type="0"; COUNT=21; DATAPRIOR=0.00004250831442; TRAINPRIOR=0.00004250831442; DECPRIOR=.; DECISION1=0; DECISION2=0; DECISION3=0; DECISION4=0; DECISION5=0; DECISION6=1;
+11062  output;
+11063  ;
+11064  run;
+
+NOTE: The data set WORK.ATTACK_TYPE has 6 observations and 11 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11065  proc datasets lib=work nolist;
+11066  modify attack_type(type=PROFIT label=attack_type);
+11067  label DECISION1= 'U2R';
+11068  label DECISION2= 'R2L';
+11069  label DECISION3= 'PROBE';
+11070  label DECISION4= 'NORM';
+11071  label DECISION5= 'DOS';
+11072  label DECISION6= '0';
+11073  run;
+
+NOTE: MODIFY was successful for WORK.ATTACK_TYPE.DATA.
+11074  quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+11075  data EM_DMREG / view=EM_DMREG;
+11076  set EMWS1.Stat_TRAIN(keep=
+11077  attack_name attack_type class count diff_srv_rate dst_bytes dst_host_count
+11078  dst_host_diff_srv_rate dst_host_rerror_rate dst_host_same_src_port_rate
+11079  dst_host_same_srv_rate dst_host_serror_rate dst_host_srv_count
+11080  dst_host_srv_diff_host_rate dst_host_srv_rerror_rate dst_host_srv_serror_rate
+11081  duration failed_logins file_creations flag hot is_guest_login land logged_in
+11082  num_access_files num_compromised num_root num_shells protocol rerror_rate
+11083  root_shell same_srv_rate serror_rate service src_bytes srv_count
+11084  srv_diff_host_rate srv_rerror_rate srv_serror_rate wrng_frags );
+11085  run;
+
+NOTE: DATA STEP view saved on file WORK.EM_DMREG.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.STAT_TRAIN.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.05 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+
+11086  *------------------------------------------------------------* ;
+11087  * Reg: DMDBClass Macro ;
+11088  *------------------------------------------------------------* ;
+11089  %macro DMDBClass;
+11090      attack_name(ASC) attack_type(DESC) class(ASC) flag(ASC) is_guest_login(ASC)
+11091     land(ASC) logged_in(ASC) protocol(ASC) service(ASC)
+11092  %mend DMDBClass;
+11093  *------------------------------------------------------------* ;
+11094  * Reg: DMDBVar Macro ;
+11095  *------------------------------------------------------------* ;
+11096  %macro DMDBVar;
+11097      count diff_srv_rate dst_bytes dst_host_count dst_host_diff_srv_rate
+11098     dst_host_rerror_rate dst_host_same_src_port_rate dst_host_same_srv_rate
+11099     dst_host_serror_rate dst_host_srv_count dst_host_srv_diff_host_rate
+11100     dst_host_srv_rerror_rate dst_host_srv_serror_rate duration failed_logins
+11101     file_creations hot num_access_files num_compromised num_root num_shells
+11102     rerror_rate root_shell same_srv_rate serror_rate src_bytes srv_count
+11103     srv_diff_host_rate srv_rerror_rate srv_serror_rate wrng_frags
+11104  %mend DMDBVar;
+11105  *------------------------------------------------------------*;
+11106  * Reg: Create DMDB;
+11107  *------------------------------------------------------------*;
+11108  proc dmdb batch data=WORK.EM_DMREG
+11109  dmdbcat=WORK.Reg_DMDB
+11110  maxlevel = 513
+11111  ;
+11112  class %DMDBClass;
+11113  var %DMDBVar;
+11114  target
+11115  attack_type
+11116  ;
+11117  run;
+
+NOTE: Records processed = 100000   Memory used = 511K.
+NOTE: Records processed = 200000   Memory used = 511K.
+NOTE: Records processed = 300000   Memory used = 511K.
+NOTE: Records processed = 400000   Memory used = 511K.
+NOTE: Records processed = 494021   Memory used = 511K.
+NOTE: There were 494021 observations read from the data set EMWS1.FIMPORT_DATA.
+NOTE: There were 494021 observations read from the data set EMWS1.FIMPORT_TRAIN.
+NOTE: View WORK.EM_DMREG.VIEW used (Total process time):
+      real time           0.86 seconds
+      cpu time            0.84 seconds
+      
+NOTE: There were 494021 observations read from the data set EMWS1.STAT_TRAIN.
+NOTE: There were 494021 observations read from the data set WORK.EM_DMREG.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.87 seconds
+      cpu time            0.85 seconds
+      
+
+11118  quit;
+11119  *--- end code ---*;
+
+11120  *------------------------------------------------------------*;
+11121  * Reg: Run DMREG procedure;
+11122  *------------------------------------------------------------*;
+11123  proc dmreg data=EM_DMREG dmdbcat=WORK.Reg_DMDB
+11124  outest = EMWS1.Reg_EMESTIMATE
+11125  outterms = EMWS1.Reg_OUTTERMS
+11126  outmap= EMWS1.Reg_MAPDS namelen=200
+11127  ;
+11128  class
+11129  attack_type
+11130  attack_name
+11131  class
+11132  flag
+11133  is_guest_login
+11134  land
+11135  logged_in
+11136  protocol
+11137  service
+11138  ;
+11139  model attack_type =
+11140  attack_name
+11141  class
+11142  count
+11143  diff_srv_rate
+11144  dst_bytes
+11145  dst_host_count
+11146  dst_host_diff_srv_rate
+11147  dst_host_rerror_rate
+11148  dst_host_same_src_port_rate
+11149  dst_host_same_srv_rate
+11150  dst_host_serror_rate
+11151  dst_host_srv_count
+11152  dst_host_srv_diff_host_rate
+11153  dst_host_srv_rerror_rate
+11154  dst_host_srv_serror_rate
+11155  duration
+11156  failed_logins
+11157  file_creations
+11158  flag
+11159  hot
+11160  is_guest_login
+11161  land
+11162  logged_in
+11163  num_access_files
+11164  num_compromised
+11165  num_root
+11166  num_shells
+11167  protocol
+11168  rerror_rate
+11169  root_shell
+11170  same_srv_rate
+11171  serror_rate
+11172  service
+11173  src_bytes
+11174  srv_count
+11175  srv_diff_host_rate
+11176  srv_rerror_rate
+11177  srv_serror_rate
+11178  wrng_frags
+11179  /level=nominal
+11180  coding=DEVIATION
+11181  nodesignprint
+11182  selection=BACKWARD choose=NONE
+11183  Hierarchy=CLASS
+11184  Rule=NONE
+11185  ;
+11186  ;
+11187  code file="C:\Users\Dinis\Google Drive\Intelligent_Systems_MSc\Artificial_Neural_Networks\Assignments\KDD Project\KDD_SAS\Workspaces\EMWS1\Reg\EMPUBLISHSCORE.sas"
+11188  group=Reg
+11189  ;
+11190  code file="C:\Users\Dinis\Google Drive\Intelligent_Systems_MSc\Artificial_Neural_Networks\Assignments\KDD Project\KDD_SAS\Workspaces\EMWS1\Reg\EMFLOWSCORE.sas"
+11191  group=Reg
+11192  residual
+11193  ;
+11194  run;
+
+NOTE: Convergence criterion (ABSCONV=276.39575423) satisfied.
+NOTE: At least one element of the gradient is greater than 1e-3.
+NOTE: Effect class was removed after Step 0 because of its redundancy.
+NOTE: Convergence criterion (ABSCONV=276.39575423) satisfied.
+NOTE: At least one element of the gradient is greater than 1e-3.
+NOTE: There were 494021 observations read from the data set EMWS1.FIMPORT_DATA.
+NOTE: There were 494021 observations read from the data set EMWS1.FIMPORT_TRAIN.
+NOTE: View WORK.EM_DMREG.VIEW used (Total process time):
+      real time           36:03.61
+      cpu time            30:49.65
+      
+NOTE: There were 494021 observations read from the data set EMWS1.STAT_TRAIN.
+ERROR: User asked for termination
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: There were 494021 observations read from the data set WORK.EM_DMREG.
+WARNING: The data set EMWS1.REG_EMESTIMATE may be incomplete.  When this step was stopped there were 6 observations and 699 variables.
+WARNING: The data set EMWS1.REG_OUTTERMS may be incomplete.  When this step was stopped there were 0 observations and 7 variables.
+WARNING: The data set EMWS1.REG_MAPDS may be incomplete.  When this step was stopped there were 3 observations and 672 variables.
+NOTE: The PROCEDURE DMREG printed pages 4-9.
+NOTE: PROCEDURE DMREG used (Total process time):
+      real time           36:03.65
+      cpu time            30:49.66
+      
+
+ERROR: User asked for termination
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: The PROCEDURE DISPLAY printed pages 1-9.
+NOTE: PROCEDURE DISPLAY used (Total process time):
+      real time           36:06.09
+      cpu time            30:51.76
+      

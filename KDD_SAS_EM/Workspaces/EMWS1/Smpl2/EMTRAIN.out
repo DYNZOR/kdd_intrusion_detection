@@ -1,0 +1,25 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+Role         Level         Count
+
+ID         INTERVAL           1   
+INPUT      BINARY             4   
+INPUT      INTERVAL          34   
+INPUT      NOMINAL            3   
+TARGET     NOMINAL            1   
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Sampling Summary
+
+                                Number of
+ Type         Data Set        Observations
+
+DATA      EMWS1.Part_TRAIN       197605   
+SAMPLE    EMWS1.Smpl2_DATA        98819   

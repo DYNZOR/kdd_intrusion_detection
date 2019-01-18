@@ -1,0 +1,728 @@
+*------------------------------------------------------------*
+User:                Dinis
+Date:                27 March 2017
+Time:                22:39:49 o'clock
+Site:                70133260
+Platform:            W32_7PRO
+Maintenance Release: 9.04.01M3P062415
+EM Version:          14.1
+* 
+*------------------------------------------------------------*
+* Training Log
+Date:                27 March 2017
+Time:                22:39:48 o'clock
+*------------------------------------------------------------*
+10865  proc freq data=EMWS1.Smpl2_VariableSet noprint;
+10866  table ROLE*LEVEL/out=WORK.Smpl2META;
+10867  run;
+ 
+NOTE: There were 43 observations read from the data set EMWS1.SMPL2_VARIABLESET.
+NOTE: The data set WORK.SMPL2META has 5 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+ 
+ 
+10868  proc print data=WORK.Smpl2META label noobs;
+10869  var ROLE LEVEL COUNT;
+10870  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+10871  title9 ' ';
+10872  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+10873  run;
+ 
+NOTE: There were 5 observations read from the data set WORK.SMPL2META.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+10874  title10;
+ 
+10881  *------------------------------------------------------------*;
+10882  * Smpl2: Retrieving stratification variable(s) levels;
+10883  *------------------------------------------------------------*;
+10884  proc freq data=EMWS1.Part_TRAIN noprint;
+10885  format
+10886  type $16.
+10887  ;
+10888  table
+10889  type
+10890  /out=EMWS1.Smpl2_STRATASUMMARY (rename=(count=_npop_ percent=_pctpop_)) missing;
+10891  run;
+ 
+NOTE: There were 197605 observations read from the data set EMWS1.PART_TRAIN.
+NOTE: The data set EMWS1.SMPL2_STRATASUMMARY has 23 observations and 3 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+ 
+ 
+10892  quit;
+ 
+10893  proc sort data=EMWS1.Smpl2_STRATASUMMARY out=EMWS1.Smpl2_STRATASUMMARY;
+10894  by descending _npop_;
+10895  run;
+ 
+NOTE: There were 23 observations read from the data set EMWS1.SMPL2_STRATASUMMARY.
+NOTE: The data set EMWS1.SMPL2_STRATASUMMARY has 23 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+10896  quit;
+ 
+10897  data EMWS1.Smpl2_STRATASUMMARY;
+10898  set EMWS1.Smpl2_STRATASUMMARY;
+10899  label _nsamp_='Sample Size';
+10900  label _pctsmp_='Sample Proportion';
+10901  label _npop_ ='Stratum Size';
+10902  label _pctpop_ ='Stratum Proportion';
+10903  _nsamp_ = .;
+10904  _pctsmp_ = .;
+10905  run;
+ 
+NOTE: There were 23 observations read from the data set EMWS1.SMPL2_STRATASUMMARY.
+NOTE: The data set EMWS1.SMPL2_STRATASUMMARY has 23 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+10906  quit;
+ 
+10907  *------------------------------------------------------------*;
+10908  * Smpl2: Create stratified sample;
+10909  *------------------------------------------------------------*;
+10910  data EMWS1.Smpl2_DATA(label="Sample of EMWS1.Part_TRAIN.");
+10911  set EMWS1.Part_TRAIN;
+10912  retain _seed_ 12345;
+10913  label _dataobs_ = "%sysfunc(sasmsg(sashelp.dmine, sample_dataobs_vlabel, NOQUOTE))";
+10914  drop _seed_ _genvalue_;
+10915  call ranuni(_seed_, _genvalue_);
+10916  drop
+10917  _n000001 _s000001
+10918  _n000002 _s000002
+10919  _n000003 _s000003
+10920  _n000004 _s000004
+10921  _n000005 _s000005
+10922  _n000006 _s000006
+10923  _n000007 _s000007
+10924  _n000008 _s000008
+10925  _n000009 _s000009
+10926  _n000010 _s000010
+10927  _n000011 _s000011
+10928  _n000012 _s000012
+10929  _n000013 _s000013
+10930  _n000014 _s000014
+10931  _n000015 _s000015
+10932  _n000016 _s000016
+10933  _n000017 _s000017
+10934  _n000018 _s000018
+10935  _n000019 _s000019
+10936  _n000020 _s000020
+10937  _n000021 _s000021
+10938  _n000022 _s000022
+10939  _n000023 _s000023
+10940  ;
+10941  length _Sformat1 $200;
+10942  drop _Sformat1;
+10943  _Sformat1 = strip(put(type, $16.));
+10944  if
+10945  _Sformat1 = 'smurf.'
+10946  then do;
+10947  _n000001 + 1;
+10948  if _s000001 < 56158 then do;
+10949  if _genvalue_*(112316 - _n000001) <=(56158 - _s000001) then do;
+10950  _s000001 + 1;
+10951  _dataobs_=_N_;
+10952  output;
+10953  end;
+10954  end;
+10955  end;
+10956  else if
+10957  _Sformat1 = 'neptune.'
+10958  then do;
+10959  _n000002 + 1;
+10960  if _s000002 < 21440 then do;
+10961  if _genvalue_*(42879 - _n000002) <=(21440 - _s000002) then do;
+10962  _s000002 + 1;
+10963  _dataobs_=_N_;
+10964  output;
+10965  end;
+10966  end;
+10967  end;
+10968  else if
+10969  _Sformat1 = 'normal.'
+10970  then do;
+10971  _n000003 + 1;
+10972  if _s000003 < 19456 then do;
+10973  if _genvalue_*(38911 - _n000003) <=(19456 - _s000003) then do;
+10974  _s000003 + 1;
+10975  _dataobs_=_N_;
+10976  output;
+10977  end;
+10978  end;
+10979  end;
+10980  else if
+10981  _Sformat1 = 'back.'
+10982  then do;
+10983  _n000004 + 1;
+10984  if _s000004 < 441 then do;
+10985  if _genvalue_*(881 - _n000004) <=(441 - _s000004) then do;
+10986  _s000004 + 1;
+10987  _dataobs_=_N_;
+10988  output;
+10989  end;
+10990  end;
+10991  end;
+10992  else if
+10993  _Sformat1 = 'satan.'
+10994  then do;
+10995  _n000005 + 1;
+10996  if _s000005 < 318 then do;
+10997  if _genvalue_*(635 - _n000005) <=(318 - _s000005) then do;
+10998  _s000005 + 1;
+10999  _dataobs_=_N_;
+11000  output;
+11001  end;
+11002  end;
+11003  end;
+11004  else if
+11005  _Sformat1 = 'ipsweep.'
+11006  then do;
+11007  _n000006 + 1;
+11008  if _s000006 < 249 then do;
+11009  if _genvalue_*(498 - _n000006) <=(249 - _s000006) then do;
+11010  _s000006 + 1;
+11011  _dataobs_=_N_;
+11012  output;
+11013  end;
+11014  end;
+11015  end;
+11016  else if
+11017  _Sformat1 = 'portsweep.'
+11018  then do;
+11019  _n000007 + 1;
+11020  if _s000007 < 208 then do;
+11021  if _genvalue_*(416 - _n000007) <=(208 - _s000007) then do;
+11022  _s000007 + 1;
+11023  _dataobs_=_N_;
+11024  output;
+11025  end;
+11026  end;
+11027  end;
+11028  else if
+11029  _Sformat1 = 'warezclient.'
+11030  then do;
+11031  _n000008 + 1;
+11032  if _s000008 < 204 then do;
+11033  if _genvalue_*(408 - _n000008) <=(204 - _s000008) then do;
+11034  _s000008 + 1;
+11035  _dataobs_=_N_;
+11036  output;
+11037  end;
+11038  end;
+11039  end;
+11040  else if
+11041  _Sformat1 = 'teardrop.'
+11042  then do;
+11043  _n000009 + 1;
+11044  if _s000009 < 196 then do;
+11045  if _genvalue_*(392 - _n000009) <=(196 - _s000009) then do;
+11046  _s000009 + 1;
+11047  _dataobs_=_N_;
+11048  output;
+11049  end;
+11050  end;
+11051  end;
+11052  else if
+11053  _Sformat1 = 'pod.'
+11054  then do;
+11055  _n000010 + 1;
+11056  if _s000010 < 53 then do;
+11057  if _genvalue_*(106 - _n000010) <=(53 - _s000010) then do;
+11058  _s000010 + 1;
+11059  _dataobs_=_N_;
+11060  output;
+11061  end;
+11062  end;
+11063  end;
+11064  else if
+11065  _Sformat1 = 'nmap.'
+11066  then do;
+11067  _n000011 + 1;
+11068  if _s000011 < 46 then do;
+11069  if _genvalue_*(92 - _n000011) <=(46 - _s000011) then do;
+11070  _s000011 + 1;
+11071  _dataobs_=_N_;
+11072  output;
+11073  end;
+11074  end;
+11075  end;
+11076  else if
+11077  _Sformat1 = 'guess_passwd.'
+11078  then do;
+11079  _n000012 + 1;
+11080  if _s000012 < 11 then do;
+11081  if _genvalue_*(21 - _n000012) <=(11 - _s000012) then do;
+11082  _s000012 + 1;
+11083  _dataobs_=_N_;
+11084  output;
+11085  end;
+11086  end;
+11087  end;
+11088  else if
+11089  _Sformat1 = 'buffer_overflow.'
+11090  then do;
+11091  _n000013 + 1;
+11092  if _s000013 < 6 then do;
+11093  if _genvalue_*(11 - _n000013) <=(6 - _s000013) then do;
+11094  _s000013 + 1;
+11095  _dataobs_=_N_;
+11096  output;
+11097  end;
+11098  end;
+11099  end;
+11100  else if
+11101  _Sformat1 = 'land.'
+11102  then do;
+11103  _n000014 + 1;
+11104  if _s000014 < 5 then do;
+11105  if _genvalue_*(8 - _n000014) <=(5 - _s000014) then do;
+11106  _s000014 + 1;
+11107  _dataobs_=_N_;
+11108  output;
+11109  end;
+11110  end;
+11111  end;
+11112  else if
+11113  _Sformat1 = 'warezmaster.'
+11114  then do;
+11115  _n000015 + 1;
+11116  if _s000015 < 5 then do;
+11117  if _genvalue_*(8 - _n000015) <=(5 - _s000015) then do;
+11118  _s000015 + 1;
+11119  _dataobs_=_N_;
+11120  output;
+11121  end;
+11122  end;
+11123  end;
+11124  else if
+11125  _Sformat1 = 'imap.'
+11126  then do;
+11127  _n000016 + 1;
+11128  if _s000016 < 5 then do;
+11129  if _genvalue_*(5 - _n000016) <=(5 - _s000016) then do;
+11130  _s000016 + 1;
+11131  _dataobs_=_N_;
+11132  output;
+11133  end;
+11134  end;
+11135  end;
+11136  else if
+11137  _Sformat1 = 'loadmodule.'
+11138  then do;
+11139  _n000017 + 1;
+11140  if _s000017 < 4 then do;
+11141  if _genvalue_*(4 - _n000017) <=(4 - _s000017) then do;
+11142  _s000017 + 1;
+11143  _dataobs_=_N_;
+11144  output;
+11145  end;
+11146  end;
+11147  end;
+11148  else if
+11149  _Sformat1 = 'rootkit.'
+11150  then do;
+11151  _n000018 + 1;
+11152  if _s000018 < 4 then do;
+11153  if _genvalue_*(4 - _n000018) <=(4 - _s000018) then do;
+11154  _s000018 + 1;
+11155  _dataobs_=_N_;
+11156  output;
+11157  end;
+11158  end;
+11159  end;
+11160  else if
+11161  _Sformat1 = 'ftp_write.'
+11162  then do;
+11163  _n000019 + 1;
+11164  if _s000019 < 3 then do;
+11165  if _genvalue_*(3 - _n000019) <=(3 - _s000019) then do;
+11166  _s000019 + 1;
+11167  _dataobs_=_N_;
+11168  output;
+11169  end;
+11170  end;
+11171  end;
+11172  else if
+11173  _Sformat1 = 'multihop.'
+11174  then do;
+11175  _n000020 + 1;
+11176  if _s000020 < 2 then do;
+11177  if _genvalue_*(2 - _n000020) <=(2 - _s000020) then do;
+11178  _s000020 + 1;
+11179  _dataobs_=_N_;
+11180  output;
+11181  end;
+11182  end;
+11183  end;
+11184  else if
+11185  _Sformat1 = 'phf.'
+11186  then do;
+11187  _n000021 + 1;
+11188  if _s000021 < 2 then do;
+11189  if _genvalue_*(2 - _n000021) <=(2 - _s000021) then do;
+11190  _s000021 + 1;
+11191  _dataobs_=_N_;
+11192  output;
+11193  end;
+11194  end;
+11195  end;
+11196  else if
+11197  _Sformat1 = 'spy.'
+11198  then do;
+11199  _n000022 + 1;
+11200  if _s000022 < 2 then do;
+11201  if _genvalue_*(2 - _n000022) <=(2 - _s000022) then do;
+11202  _s000022 + 1;
+11203  _dataobs_=_N_;
+11204  output;
+11205  end;
+11206  end;
+11207  end;
+11208  else if
+11209  _Sformat1 = 'perl.'
+11210  then do;
+11211  _n000023 + 1;
+11212  if _s000023 < 1 then do;
+11213  if _genvalue_*(1 - _n000023) <=(1 - _s000023) then do;
+11214  _s000023 + 1;
+11215  _dataobs_=_N_;
+11216  output;
+11217  end;
+11218  end;
+11219  end;
+11220  run;
+ 
+NOTE: There were 197605 observations read from the data set EMWS1.PART_TRAIN.
+NOTE: The data set EMWS1.SMPL2_DATA has 98819 observations and 43 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.11 seconds
+ 
+ 
+11221  data _tempNobs;
+11222  length Type $8 Table $32 Nobs 8;
+11223  label type= "%sysfunc(sasmsg(sashelp.dmine, meta_type_vlabel,    NOQUOTE))" table = "%sysfunc(sasmsg(sashelp.dmine, meta_dataset_vlabel, NOQUOTE))" nobs = "%sysfunc(sasmsg(sashelp.dmine,  rpt_numObs_vlabel,   NOQUOTE))";
+11224  type='DATA';
+11225  table="EMWS1.Part_TRAIN";
+11226  Nobs=197605;
+11227  output;
+11228  type='SAMPLE';
+11229  table="EMWS1.Smpl2_DATA";
+11230  Nobs=98819;
+11231  output;
+11232  run;
+ 
+NOTE: The data set WORK._TEMPNOBS has 2 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11233  %let _cn = %sysfunc(getoption(CENTER));
+11234  %let _nb = %sysfunc(getoption(NUMBER));
+11235  options nonumber nocenter;
+11236  proc print data=_tempNobs noobs label;
+11237  title9 ' ';
+11238  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_samplingSummary_title, NOQUOTE))";
+11239  run;
+ 
+NOTE: There were 2 observations read from the data set WORK._TEMPNOBS.
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11240  title10;
+11241  options &_cn &_nb;
+11242  run;
+ 
+11243  quit;
+ 
+*------------------------------------------------------------*
+* Score Log
+Date:                27 March 2017
+Time:                22:39:48 o'clock
+*------------------------------------------------------------*
+11345  *------------------------------------------------------------*;
+11346  * Smpl2: Computing metadata for DATA data;
+11347  *------------------------------------------------------------*;
+ 
+*------------------------------------------------------------*
+* Report Log
+Date:                27 March 2017
+Time:                22:39:48 o'clock
+*------------------------------------------------------------*
+11728  *------------------------------------------------------------*;
+11729  * Smpl2: Computing statistics for class target variables;
+11730  *------------------------------------------------------------*;
+11731  ods listing close;
+11732  ods output onewayfreqs=WORK.TEMPFREQ;
+11733  proc freq data = EMWS1.Smpl2_DATA order=formatted addnames;
+11734  table type / missing;
+11735  run;
+ 
+NOTE: The data set WORK.TEMPFREQ has 23 observations and 8 variables.
+NOTE: There were 98819 observations read from the data set EMWS1.SMPL2_DATA.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+ 
+ 
+11736  quit;
+11737  ods listing;
+11738  data WORK.Smpl2_BAR(keep=_VARIABLE_ TYPE COUNT PERCENT _X_ _XLABEL_);
+11739  label _VARIABLE_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" Type = "%sysfunc(sasmsg(sashelp.dmine, rpt_type_vlabel,         NOQUOTE))" _X_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_numValue_vlabel, NOQUOTE))" _XLABEL_ =
+11740     "%sysfunc(sasmsg(sashelp.dmine, rpt_fmtValue_vlabel ,    NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel,        NOQUOTE))" PERCENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_percent_vlabel,      NOQUOTE))";
+11741  dsid = open("WORK.TEMPFREQ");
+11742  varnum = varnum(dsid, 'VARIABLE');
+11743  freqnum = varnum(dsid, 'FREQUENCY');
+11744  pvarnum = varnum(dsid, 'PERCENT');
+11745  typenum = varnum(dsid, '_TYPE_');
+11746  length _VARIABLE_ $32 TYPE $1 _XLABEL_ $32;
+11747  do while(^fetch(dsid));
+11748  _VARIABLE_ = strip(getvarc(dsid, varnum));
+11749  count = getvarn(dsid, freqnum);
+11750  percent= getvarn(dsid, pvarnum);
+11751  vvarnum = varnum(dsid, _VARIABLE_);
+11752  type = vartype(dsid, vvarnum);
+11753  fvarnum = varnum(dsid, 'F_'!!substr(_VARIABLE_, 1, 30));
+11754  _XLABEL_ = left(getvarc(dsid, fvarnum));
+11755  _X_ = .;
+11756  if TYPE eq 'N' then _X_ = getvarn(dsid, vvarnum);
+11757  output;
+11758  end;
+11759  dsid = close(dsid);
+11760  run;
+ 
+NOTE: The data set WORK.SMPL2_BAR has 23 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11761  proc sort data=WORK.Smpl2_BAR NOTHREADS;
+11762  by _VARIABLE_;
+11763  run;
+ 
+NOTE: There were 23 observations read from the data set WORK.SMPL2_BAR.
+NOTE: The data set WORK.SMPL2_BAR has 23 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11764  proc sort data=WORK.M0HJGT1P;
+11765  by Name;
+11766  run;
+ 
+NOTE: There were 1 observations read from the data set WORK.M0HJGT1P.
+NOTE: The data set WORK.M0HJGT1P has 1 observations and 21 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11767  data WORK.Smpl2_BAR;
+11768  merge WORK.Smpl2_BAR(in=_a) WORK.M0HJGT1P(keep=Name Label Role rename=(Name=_Variable_ Label=_Label_));
+11769  by _Variable_;
+11770  label Role = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel ,  NOQUOTE))";
+11771  label Label = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel , NOQUOTE))";
+11772  if _a then output;
+11773  run;
+ 
+NOTE: Variable Label is uninitialized.
+WARNING: Multiple lengths were specified for the BY variable _VARIABLE_ by input data sets. This might cause unexpected results.
+NOTE: There were 23 observations read from the data set WORK.SMPL2_BAR.
+NOTE: There were 1 observations read from the data set WORK.M0HJGT1P.
+NOTE: The data set WORK.SMPL2_BAR has 23 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11774  data EMWS1.Smpl2_CLASS;
+11775  length DATA $6;
+11776  set WORK.Smpl2_BAR;
+11777  DATA = 'SAMPLE';
+11778  run;
+ 
+NOTE: There were 23 observations read from the data set WORK.SMPL2_BAR.
+NOTE: The data set EMWS1.SMPL2_CLASS has 23 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11779  ods listing close;
+11780  ods output onewayfreqs=WORK.TEMPFREQ;
+11781  proc freq data = EMWS1.Part_TRAIN order=formatted addnames;
+11782  table type / missing;
+11783  run;
+ 
+NOTE: The data set WORK.TEMPFREQ has 23 observations and 8 variables.
+NOTE: There were 197605 observations read from the data set EMWS1.PART_TRAIN.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+ 
+ 
+11784  quit;
+11785  ods listing;
+11786  data WORK.Smpl2_BAR(keep=_VARIABLE_ TYPE COUNT PERCENT _X_ _XLABEL_);
+11787  label _VARIABLE_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" Type = "%sysfunc(sasmsg(sashelp.dmine, rpt_type_vlabel,         NOQUOTE))" _X_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_numValue_vlabel, NOQUOTE))" _XLABEL_ =
+11788     "%sysfunc(sasmsg(sashelp.dmine, rpt_fmtValue_vlabel ,    NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel,        NOQUOTE))" PERCENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_percent_vlabel,      NOQUOTE))";
+11789  dsid = open("WORK.TEMPFREQ");
+11790  varnum = varnum(dsid, 'VARIABLE');
+11791  freqnum = varnum(dsid, 'FREQUENCY');
+11792  pvarnum = varnum(dsid, 'PERCENT');
+11793  typenum = varnum(dsid, '_TYPE_');
+11794  length _VARIABLE_ $32 TYPE $1 _XLABEL_ $32;
+11795  do while(^fetch(dsid));
+11796  _VARIABLE_ = strip(getvarc(dsid, varnum));
+11797  count = getvarn(dsid, freqnum);
+11798  percent= getvarn(dsid, pvarnum);
+11799  vvarnum = varnum(dsid, _VARIABLE_);
+11800  type = vartype(dsid, vvarnum);
+11801  fvarnum = varnum(dsid, 'F_'!!substr(_VARIABLE_, 1, 30));
+11802  _XLABEL_ = left(getvarc(dsid, fvarnum));
+11803  _X_ = .;
+11804  if TYPE eq 'N' then _X_ = getvarn(dsid, vvarnum);
+11805  output;
+11806  end;
+11807  dsid = close(dsid);
+11808  run;
+ 
+NOTE: The data set WORK.SMPL2_BAR has 23 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11809  proc sort data=WORK.Smpl2_BAR NOTHREADS;
+11810  by _VARIABLE_;
+11811  run;
+ 
+NOTE: There were 23 observations read from the data set WORK.SMPL2_BAR.
+NOTE: The data set WORK.SMPL2_BAR has 23 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11812  proc sort data=WORK.M0HJGT1P;
+11813  by Name;
+11814  run;
+ 
+NOTE: Input data set is already sorted, no sorting done.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11815  data WORK.Smpl2_BAR;
+11816  merge WORK.Smpl2_BAR(in=_a) WORK.M0HJGT1P(keep=Name Label Role rename=(Name=_Variable_ Label=_Label_));
+11817  by _Variable_;
+11818  label Role = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel ,  NOQUOTE))";
+11819  label Label = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel , NOQUOTE))";
+11820  if _a then output;
+11821  run;
+ 
+NOTE: Variable Label is uninitialized.
+WARNING: Multiple lengths were specified for the BY variable _VARIABLE_ by input data sets. This might cause unexpected results.
+NOTE: There were 23 observations read from the data set WORK.SMPL2_BAR.
+NOTE: There were 1 observations read from the data set WORK.M0HJGT1P.
+NOTE: The data set WORK.SMPL2_BAR has 23 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11822  data WORK.Smpl2_BAR;
+11823  length DATA $6;
+11824  set WORK.Smpl2_BAR;
+11825  DATA = 'DATA';
+11826  run;
+ 
+NOTE: There were 23 observations read from the data set WORK.SMPL2_BAR.
+NOTE: The data set WORK.SMPL2_BAR has 23 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11827  data EMWS1.Smpl2_CLASS;
+11828  set EMWS1.Smpl2_CLASS WORK.Smpl2_BAR;
+11829  run;
+ 
+NOTE: There were 23 observations read from the data set EMWS1.SMPL2_CLASS.
+NOTE: There were 23 observations read from the data set WORK.SMPL2_BAR.
+NOTE: The data set EMWS1.SMPL2_CLASS has 46 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11830  data EMWS1.Smpl2_CLASS(rename=(_VARIABLE_=VARIABLE _X_=VALUE _XLABEL_=FORMATTEDVALUE));
+11831  label Data = "%sysfunc(sasmsg(sashelp.dmine, rpt_data_vlabel ,     NOQUOTE))";
+11832  label _VARIABLE_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel , NOQUOTE))";
+11833  label _X_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_numValue_vlabel , NOQUOTE))";
+11834  label _XLABEL_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_fmtValue_vlabel , NOQUOTE))";
+11835  set EMWS1.Smpl2_CLASS;
+11836  drop type role;
+11837  run;
+ 
+NOTE: There were 46 observations read from the data set EMWS1.SMPL2_CLASS.
+NOTE: The data set EMWS1.SMPL2_CLASS has 46 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11838  proc sort data=EMWS1.Smpl2_CLASS NOTHREADS;
+11839  by DATA;
+11840  run;
+ 
+NOTE: There were 46 observations read from the data set EMWS1.SMPL2_CLASS.
+NOTE: The data set EMWS1.SMPL2_CLASS has 46 observations and 7 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11841  %let _cn = %sysfunc(getoption(CENTER));
+11842  %let _nb = %sysfunc(getoption(NUMBER));
+11843  options nonumber nocenter;
+11844  title;
+11845  proc print data=EMWS1.Smpl2_CLASS(obs=500) noobs label;
+11846  by DATA;
+11847  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_classTargetStats_title, NOQUOTE))";
+11848  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE, 500))";
+11849  run;
+ 
+NOTE: There were 46 observations read from the data set EMWS1.SMPL2_CLASS.
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11850  title9;
+11851  title10;
+11852  options &_cn &_nb;
+ 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><StatGraph silkCompat="true" version="9.2_S2DVR">
+<PieChart actionMode="select" data="SAMPLE_DATA" name="Pie">
+<Role discrete="false" sortOrder="Data" type="Category" variable="attack_type"/>
+<Legend type="Category" visible="false">
+<Title textAlign="Left" verticalAlign="Bottom">attack_type</Title>
+<Labels SASFormat="$5"/>
+</Legend>
+</PieChart>
+</StatGraph>

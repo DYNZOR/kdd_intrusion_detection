@@ -1,0 +1,683 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+ Role        Level         Count
+
+INPUT      BINARY             5   
+INPUT      INTERVAL          34   
+INPUT      NOMINAL            4   
+TARGET     NOMINAL            1   
+ 
+                                                                                                                                                                                                                                                                
+ 
+Variable Levels Summary
+(maximum 500 observations printed)
+
+                         Frequency
+ Variable       Role       Count
+
+attack_type    TARGET        6    
+ 
+                                                                                                                                                                                                                                                                
+ 
+Class Variable Summary Statistics
+(maximum 500 observations printed)
+
+Data Role=TRAIN
+
+                                     Number
+Data                                   of                               Mode                     Mode2
+Role     Variable Name      Role     Levels    Missing    Mode       Percentage    Mode2       Percentage
+
+TRAIN    attack_name       INPUT       20         0       normal.      56.24       neptune.      20.48   
+TRAIN    class             INPUT        2         0       0            56.24       1             43.76   
+TRAIN    flag              INPUT       11         0       SF           76.57       S0            20.56   
+TRAIN    is_guest_login    INPUT        2         0       0            99.78       1              0.22   
+TRAIN    land              INPUT        2         0       0            99.98       1              0.02   
+TRAIN    logged_in         INPUT        2         0       1            52.09       0             47.91   
+TRAIN    protocol          INPUT        3         0       tcp          76.17       icmp          20.29   
+TRAIN    service           INPUT       63         0       http         46.95       private       20.11   
+TRAIN    attack_type       TARGET       6         0       norm         56.24       dos           41.83   
+ 
+                                                                                                                                                                                                                                                                
+ 
+Distribution of Class Target and Segment Variables
+(maximum 500 observations printed)
+
+Data Role=TRAIN
+
+Data      Variable                          Frequency
+Role        Name         Role     Level         Count    Percent
+
+TRAIN    attack_type    TARGET    norm          56237     56.237
+TRAIN    attack_type    TARGET    dos           41827     41.827
+TRAIN    attack_type    TARGET    probe          1808      1.808
+TRAIN    attack_type    TARGET    r2l             102      0.102
+TRAIN    attack_type    TARGET    0                17      0.017
+TRAIN    attack_type    TARGET    u2r               9      0.009
+ 
+                                                                                                                                                                                                                                                                
+ 
+Interval Variable Summary Statistics
+(maximum 500 observations printed)
+
+Data Role=TRAIN
+
+                                                    Standard          Non
+Variable                       Role         Mean    Deviation     Missing     Missing     Minimum      Median     Maximum    Skewness    Kurtosis
+
+count                          INPUT    143.2186    195.9461       100000           0           0          16         511    1.104269    -0.44227
+diff_srv_rate                  INPUT     0.02182    0.092023       100000           0           0           0           1     9.39806    94.98803
+dst_bytes                      INPUT    3315.751    68569.09       100000           0           0         237     5155468    68.26162    4955.828
+dst_host_count                 INPUT    183.1199    99.09677       100000           0           0         255         255    -0.82709    -1.10159
+dst_host_diff_srv_rate         INPUT    0.029466    0.101995       100000           0           0           0           1    8.095155    71.59602
+dst_host_rerror_rate           INPUT    0.027456    0.155663       100000           0           0           0           1    5.847991    32.64393
+dst_host_same_src_port_rate    INPUT     0.24936    0.406967       100000           0           0        0.01           1    1.236202    -0.37618
+dst_host_same_srv_rate         INPUT    0.749007    0.404283       100000           0           0           1           1     -1.0965    -0.70016
+dst_host_serror_rate           INPUT    0.207343    0.404189       100000           0           0           0           1    1.448885    0.102563
+dst_host_srv_count             INPUT    182.6614    105.6908       100000           0           0         255         255    -0.89432    -1.08507
+dst_host_srv_diff_host_rate    INPUT    0.017946     0.06005       100000           0           0           0           1    8.558734    97.01469
+dst_host_srv_rerror_rate       INPUT    0.026752     0.15575       100000           0           0           0           1     5.91807     33.2703
+dst_host_srv_serror_rate       INPUT    0.206942    0.404568       100000           0           0           0           1    1.449267    0.101493
+duration                       INPUT     3.71774    193.1853       100000           0           0           0       25602    74.67799    6474.372
+failed_logins                  INPUT      0.0007    0.032856       100000           0           0           0           5     75.4977    8434.859
+file_creations                 INPUT     0.00283    0.160506       100000           0           0           0          28    115.3822    15766.18
+hot                            INPUT     0.06613    0.710015       100000           0           0           0          30    26.61308    908.1635
+num_access_files               INPUT     0.00294    0.060427       100000           0           0           0           6    29.49561    1525.929
+num_compromised                INPUT     0.03111     2.54625       100000           0           0           0         767    281.4823    83086.18
+num_root                       INPUT     0.02382    2.857694       100000           0           0           0         857    277.9979    81651.02
+num_shells                     INPUT     0.00024    0.017319       100000           0           0           0           2    80.81196    7329.036
+rerror_rate                    INPUT    0.026965     0.15912       100000           0           0           0           1    5.835995    32.26705
+root_shell                     INPUT     0.00029    0.017027       100000           0           0           0           1    58.69736    3443.448
+same_srv_rate                  INPUT    0.800332    0.383679       100000           0           0           1           1    -1.41427    0.022284
+serror_rate                    INPUT    0.207396    0.404452       100000           0           0           0           1    1.446736    0.096856
+src_bytes                      INPUT    8783.784     2192767       100000           0           0         244    6.9338E8    316.1731    99976.92
+srv_count                      INPUT    107.1448     196.404       100000           0           0          11         511    1.553973    0.442811
+srv_diff_host_rate             INPUT    0.086857    0.227581       100000           0           0           0           1    3.153279    9.213504
+srv_rerror_rate                INPUT     0.02829    0.160236       100000           0           0           0           1    5.758725      31.684
+srv_serror_rate                INPUT     0.20751    0.404695       100000           0           0           0           1    1.445218    0.092226
+wrng_frags                     INPUT     0.00633    0.134574       100000           0           0           0           3    21.85647    480.7182
+ 
+                                                                                                                                                                                                                                                                
+ 
+Class Variable Summary Statistics by Class Target
+(maximum 500 observations printed)
+
+Data Role=TRAIN Variable Name=attack_name
+
+                         Number
+               Target      of                                        Mode                          Mode2
+  Target       Level     Levels    Missing    Mode                Percentage    Mode2            Percentage
+
+_OVERALL_                  20         0       normal.               56.24       neptune.           20.48   
+attack_type    0            1         0       land.                 100.0                           0.00   
+attack_type    dos          5         0       smurf.                56.28       neptune.           41.12   
+attack_type    norm         1         0       normal.               100.0                           0.00   
+attack_type    probe        4         0       satan.                38.69       ipsweep.           30.36   
+attack_type    r2l          8         0       warezclient.          90.59       guess_passwd.       4.71   
+attack_type    u2r          4         0       buffer_overflow.      57.69       rootkit.           19.23   
+
+
+Data Role=TRAIN Variable Name=class
+
+                         Number
+               Target      of                            Mode                  Mode2
+  Target       Level     Levels    Missing    Mode    Percentage    Mode2    Percentage
+
+_OVERALL_                   2         0        0        56.24         1        43.76   
+attack_type    0            1         0        1        100.0                   0.00   
+attack_type    dos          1         0        1        100.0                   0.00   
+attack_type    norm         1         0        0        100.0                   0.00   
+attack_type    probe        1         0        1        100.0                   0.00   
+attack_type    r2l          1         0        1        100.0                   0.00   
+attack_type    u2r          1         0        1        100.0                   0.00   
+
+
+Data Role=TRAIN Variable Name=flag
+
+                         Number
+               Target      of                            Mode                  Mode2
+  Target       Level     Levels    Missing    Mode    Percentage    Mode2    Percentage
+
+_OVERALL_                  11         0       SF        76.57       S0         20.56   
+attack_type    0            1         0       S0        100.0                   0.00   
+attack_type    dos          5         0       SF        58.78       S0         41.12   
+attack_type    norm         9         0       SF        94.28       REJ         5.49   
+attack_type    probe        9         0       REJ       37.30       SF         35.96   
+attack_type    r2l          8         0       SF        94.58       RSTO        4.09   
+attack_type    u2r          2         0       SF        98.08       RSTO        1.92   
+
+
+Data Role=TRAIN Variable Name=is_guest_login
+
+                         Number
+               Target      of                            Mode                  Mode2
+  Target       Level     Levels    Missing    Mode    Percentage    Mode2    Percentage
+
+_OVERALL_                   2         0        0        99.78         1         0.22   
+attack_type    0            1         0        0        100.0                   0.00   
+attack_type    dos          1         0        0        100.0                   0.00   
+attack_type    norm         2         0        0        99.62         1         0.38   
+attack_type    probe        1         0        0        100.0                   0.00   
+attack_type    r2l          2         0        0        72.11         1        27.89   
+attack_type    u2r          1         0        0        100.0                   0.00   
+
+
+Data Role=TRAIN Variable Name=land
+
+                         Number
+               Target      of                            Mode                  Mode2
+  Target       Level     Levels    Missing    Mode    Percentage    Mode2    Percentage
+
+_OVERALL_                   2         0        0        99.98         1         0.02   
+attack_type    0            1         0        1        100.0                   0.00   
+attack_type    dos          1         0        0        100.0                   0.00   
+attack_type    norm         2         0        0        100.0         1         0.00   
+attack_type    probe        1         0        0        100.0                   0.00   
+attack_type    r2l          1         0        0        100.0                   0.00   
+attack_type    u2r          1         0        0        100.0                   0.00   
+
+
+Data Role=TRAIN Variable Name=logged_in
+
+                         Number
+               Target      of                            Mode                  Mode2
+  Target       Level     Levels    Missing    Mode    Percentage    Mode2    Percentage
+
+_OVERALL_                   2         0        1        52.09         0        47.91   
+attack_type    0            1         0        0        100.0                   0.00   
+attack_type    dos          2         0        0        97.90         1         2.10   
+attack_type    norm         2         0        1        71.90         0        28.10   
+attack_type    probe        2         0        0        99.76         1         0.24   
+attack_type    r2l          2         0        1        92.27         0         7.73   
+attack_type    u2r          2         0        1        88.46         0        11.54   
+
+
+Data Role=TRAIN Variable Name=protocol
+
+                         Number
+               Target      of                            Mode                  Mode2
+  Target       Level     Levels    Missing    Mode    Percentage    Mode2    Percentage
+
+_OVERALL_                   3         0       tcp       76.17       icmp       20.29   
+attack_type    0            1         0       tcp       100.0                   0.00   
+attack_type    dos          3         0       icmp      56.38       tcp        43.23   
+attack_type    norm         3         0       tcp       78.96       udp        19.71   
+attack_type    probe        3         0       tcp       64.57       icmp       30.68   
+attack_type    r2l          1         0       tcp       100.0                   0.00   
+attack_type    u2r          2         0       tcp       94.23       udp         5.77   
+
+
+Data Role=TRAIN Variable Name=service
+
+                         Number
+               Target      of                                Mode                     Mode2
+  Target       Level     Levels    Missing    Mode        Percentage    Mode2       Percentage
+
+_OVERALL_                  63         0       http          46.95       private       20.11   
+attack_type    0            2         0       finger        95.24       telnet         4.76   
+attack_type    dos         56         0       ecr_i         56.38       private       39.18   
+attack_type    norm        25         0       http          63.62       smtp           9.87   
+attack_type    probe       48         0       other         36.67       eco_i         30.51   
+attack_type    r2l          7         0       ftp_data      65.10       ftp           27.80   
+attack_type    u2r          4         0       telnet        65.38       ftp_data      23.08   
+ 
+                                                                                                                                                                                                                                                                
+ 
+Interval Variable Summary Statistics by Class Target
+(maximum 500 observations printed)
+
+Data Role=TRAIN Variable=count
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role     Label
+
+_OVERALL_                      16           0      100000           0         511    143.2186    195.9461     1.104269    -0.44227    INPUT    count
+attack_type    0                1           0          21           1          78    4.761905    16.78662     4.577534    20.96715    INPUT    count
+attack_type    dos            510           0      100000           1         511    363.1931    174.3011     -0.49614    -1.44503    INPUT    count
+attack_type    norm             3           0       97278           0         511    8.163141    17.71197      10.1598    154.6018    INPUT    count
+attack_type    probe            1           0        4107           0         511    171.9355    233.5028     0.709196    -1.44849    INPUT    count
+attack_type    r2l              1           0        1126           1           4    1.315275    0.485411      1.14445    0.636292    INPUT    count
+attack_type    u2r              1           0          52           1         151    5.807692    23.45462     5.556837    31.79396    INPUT    count
+
+
+Data Role=TRAIN Variable=diff_srv_rate
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role         Label
+
+_OVERALL_                       0           0      100000           0           1     0.02182    0.092023      9.39806    94.98803    INPUT    diff_srv_rate
+attack_type    0                0           0          21           0           1    0.051429    0.218043     4.536415    20.68854    INPUT    diff_srv_rate
+attack_type    dos              0           0      100000           0           1    0.026764    0.033454     1.705842    23.92201    INPUT    diff_srv_rate
+attack_type    norm             0           0       97278           0           1    0.018239    0.116635      6.84603    48.04114    INPUT    diff_srv_rate
+attack_type    probe            0           0        4107           0           1    0.405009    0.479343      0.39395    -1.80482    INPUT    diff_srv_rate
+attack_type    r2l              0           0        1126           0           1    0.005924     0.07548     12.81083     163.658    INPUT    diff_srv_rate
+attack_type    u2r              0           0          52           0           1    0.063654    0.221324     3.641544    12.52978    INPUT    diff_srv_rate
+
+
+Data Role=TRAIN Variable=dst_bytes
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role       Label
+
+_OVERALL_                     237           0      100000           0     5155468    3315.751    68569.09     68.26162    4955.828    INPUT    dst_bytes
+attack_type    0                0           0          21           0           0           0           0            .           .    INPUT    dst_bytes
+attack_type    dos              0           0      100000           0        8315    173.0617    1184.305     6.710071    43.06365    INPUT    dst_bytes
+attack_type    norm           421           0       97278           0     5134218    3384.651     37578.2     74.25603     7274.84    INPUT    dst_bytes
+attack_type    probe            0           0        4107           0         375    0.449233    8.610619     28.38111    1012.451    INPUT    dst_bytes
+attack_type    r2l              0           0        1126           0     5155468    72304.94    592651.9     8.415997     69.3223    INPUT    dst_bytes
+attack_type    u2r           2857           0          52           0       70529    5141.962    10081.51      5.70121     36.1744    INPUT    dst_bytes
+
+
+Data Role=TRAIN Variable=dst_host_count
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role         Label
+
+_OVERALL_                     255           0      100000           0         255    183.1199    99.09677     -0.82709    -1.10159    INPUT    dst_host_count
+attack_type    0                1           0          21           1          16    2.904762    4.826021     2.282847    3.699457    INPUT    dst_host_count
+attack_type    dos            255           0      100000           1         255    253.7024    15.27609     -12.9953    177.3417    INPUT    dst_host_count
+attack_type    norm           160           0       97278           0         255    148.5121    103.3965     -0.17745    -1.70716    INPUT    dst_host_count
+attack_type    probe          255           0        4107           1         255    168.9786     117.833     -0.67493    -1.51398    INPUT    dst_host_count
+attack_type    r2l              8           0        1126           1         255    80.42629    109.2712     0.845293     -1.2058    INPUT    dst_host_count
+attack_type    u2r              2           0          52           1         255    47.76923    96.19213     1.747414    1.135922    INPUT    dst_host_count
+
+
+Data Role=TRAIN Variable=dst_host_diff_srv_rate
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role             Label
+
+_OVERALL_                       0           0      100000           0           1    0.029466    0.101995     8.095155    71.59602    INPUT    dst_host_diff_srv_rate
+attack_type    0                0           0          21           0         0.2    0.026667    0.067107     2.225203    3.304058    INPUT    dst_host_diff_srv_rate
+attack_type    dos              0           0      100000           0           1    0.028502    0.034662     0.830142    7.446188    INPUT    dst_host_diff_srv_rate
+attack_type    norm             0           0       97278           0           1    0.056479    0.180028     3.690219     12.3861    INPUT    dst_host_diff_srv_rate
+attack_type    probe         0.87           0        4107           0           1    0.590231    0.452009     -0.37868    -1.70775    INPUT    dst_host_diff_srv_rate
+attack_type    r2l              0           0        1126           0           1    0.019245    0.064532     8.948487    110.4035    INPUT    dst_host_diff_srv_rate
+attack_type    u2r              0           0          52           0        0.75        0.04    0.146609     4.065741    15.78497    INPUT    dst_host_diff_srv_rate
+
+
+Data Role=TRAIN Variable=dst_host_rerror_rate
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role            Label
+
+_OVERALL_                       0           0      100000           0           1    0.027456    0.155663     5.847991    32.64393    INPUT    dst_host_rerror_rate
+attack_type    0                0           0          21           0        0.07     0.00619    0.019615     3.010246    7.892884    INPUT    dst_host_rerror_rate
+attack_type    dos              0           0      100000           0           1    0.001073    0.013039     39.32782    2339.409    INPUT    dst_host_rerror_rate
+attack_type    norm             0           0       97278           0           1    0.057717    0.224995       3.8232    12.84217    INPUT    dst_host_rerror_rate
+attack_type    probe         0.81           0        4107           0           1      0.5483    0.441584     -0.31837    -1.76011    INPUT    dst_host_rerror_rate
+attack_type    r2l              0           0        1126           0        0.96    0.045178    0.190914     4.365316    17.31494    INPUT    dst_host_rerror_rate
+attack_type    u2r              0           0          52           0        0.73    0.039615    0.140893     4.416169    19.57897    INPUT    dst_host_rerror_rate
+
+
+Data Role=TRAIN Variable=dst_host_same_src_port_rate
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role                Label
+
+_OVERALL_                    0.01           0      100000           0           1     0.24936    0.406967     1.236202    -0.37618    INPUT    dst_host_same_src_port_rate
+attack_type    0                1           0          21        0.07           1        0.87    0.326405     -2.20474    3.159752    INPUT    dst_host_same_src_port_rate
+attack_type    dos              1           0      100000           0           1    0.563942    0.494835     -0.25623    -1.93135    INPUT    dst_host_same_src_port_rate
+attack_type    norm          0.01           0       97278           0           1    0.133952    0.280805     2.374218    4.225245    INPUT    dst_host_same_src_port_rate
+attack_type    probe            1           0        4107           0           1    0.589576    0.474631     -0.36227    -1.81203    INPUT    dst_host_same_src_port_rate
+attack_type    r2l              1           0        1126           0           1    0.637309    0.464419     -0.54722    -1.64827    INPUT    dst_host_same_src_port_rate
+attack_type    u2r            0.5           0          52           0           1    0.568269    0.428988      -0.1468    -1.78681    INPUT    dst_host_same_src_port_rate
+
+
+Data Role=TRAIN Variable=dst_host_same_srv_rate
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role             Label
+
+_OVERALL_                       1           0      100000           0           1    0.749007    0.404283      -1.0965    -0.70016    INPUT    dst_host_same_srv_rate
+attack_type    0                1           0          21        0.07           1        0.87    0.326405     -2.20474    3.159752    INPUT    dst_host_same_srv_rate
+attack_type    dos              1           0      100000           0           1     0.60196    0.471762     -0.34619    -1.87293    INPUT    dst_host_same_srv_rate
+attack_type    norm             1           0       97278           0           1    0.844991    0.305206     -1.91379    2.165552    INPUT    dst_host_same_srv_rate
+attack_type    probe            0           0        4107           0           1    0.318797    0.460025     0.788661    -1.36291    INPUT    dst_host_same_srv_rate
+attack_type    r2l              1           0        1126           0           1    0.753481    0.354125     -0.89024    -0.96661    INPUT    dst_host_same_srv_rate
+attack_type    u2r              1           0          52           0           1    0.781154    0.399581      -1.3861    0.025253    INPUT    dst_host_same_srv_rate
+
+
+Data Role=TRAIN Variable=dst_host_serror_rate
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role            Label
+
+_OVERALL_                       0           0      100000           0           1    0.207343    0.404189     1.448885    0.102563    INPUT    dst_host_serror_rate
+attack_type    0                1           0          21        0.07           1     0.89381    0.280971     -2.57062    5.498567    INPUT    dst_host_serror_rate
+attack_type    dos              0           0      100000           0           1    0.411303    0.491995     0.360782     -1.8698    INPUT    dst_host_serror_rate
+attack_type    norm             0           0       97278           0           1    0.002121    0.029422     25.00369    692.8451    INPUT    dst_host_serror_rate
+attack_type    probe            0           0        4107           0           1    0.070058    0.169181      4.11713    18.66125    INPUT    dst_host_serror_rate
+attack_type    r2l              0           0        1126           0           1    0.021554    0.088527     7.209353     63.6579    INPUT    dst_host_serror_rate
+attack_type    u2r              0           0          52           0           0           0           0            .           .    INPUT    dst_host_serror_rate
+
+
+Data Role=TRAIN Variable=dst_host_srv_count
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role           Label
+
+_OVERALL_                     255           0      100000           0         255    182.6614    105.6908     -0.89432    -1.08507    INPUT    dst_host_srv_count
+attack_type    0                4           0          21           1           9    4.238095    2.527939      0.23749    -1.05542    INPUT    dst_host_srv_count
+attack_type    dos            255           0      100000           1         255      152.44    120.2606     -0.32753    -1.88296    INPUT    dst_host_srv_count
+attack_type    norm           255           0       97278           0         255    202.0641    86.91458     -1.39025    0.314529    INPUT    dst_host_srv_count
+attack_type    probe            1           0        4107           1         255    53.09813    92.67443     1.519362    0.569184    INPUT    dst_host_srv_count
+attack_type    r2l             32           0        1126           1         255    38.99734     34.9955     1.753337    4.627594    INPUT    dst_host_srv_count
+attack_type    u2r              2           0          52           1          84    9.884615    21.93364     2.982308    7.533934    INPUT    dst_host_srv_count
+
+
+Data Role=TRAIN Variable=dst_host_srv_diff_host_rate
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role                Label
+
+_OVERALL_                       0           0      100000           0           1    0.017946     0.06005     8.558734    97.01469    INPUT    dst_host_srv_diff_host_rate
+attack_type    0             0.33           0          21           0           1    0.545238    0.427172     -0.02428    -1.79723    INPUT    dst_host_srv_diff_host_rate
+attack_type    dos              0           0      100000           0        0.67    0.000314    0.012615     41.54486    1745.342    INPUT    dst_host_srv_diff_host_rate
+attack_type    norm          0.01           0       97278           0           1    0.024123    0.049505     5.702565     60.3818    INPUT    dst_host_srv_diff_host_rate
+attack_type    probe            0           0        4107           0           1    0.189367    0.309269     1.464146    1.006425    INPUT    dst_host_srv_diff_host_rate
+attack_type    r2l           0.07           0        1126           0           1     0.09175    0.115805     1.862516    5.968185    INPUT    dst_host_srv_diff_host_rate
+attack_type    u2r              0           0          52           0           1    0.081154    0.213143     2.846579     7.81458    INPUT    dst_host_srv_diff_host_rate
+
+
+Data Role=TRAIN Variable=dst_host_srv_rerror_rate
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role              Label
+
+_OVERALL_                       0           0      100000           0           1    0.026752     0.15575      5.91807     33.2703    INPUT    dst_host_srv_rerror_rate
+attack_type    0                0           0          21           0           0           0           0            .           .    INPUT    dst_host_srv_rerror_rate
+attack_type    dos              0           0      100000           0           1    0.001069    0.013035     39.35728    2341.775    INPUT    dst_host_srv_rerror_rate
+attack_type    norm             0           0       97278           0           1     0.05583    0.218892      3.82641    12.91863    INPUT    dst_host_srv_rerror_rate
+attack_type    probe            1           0        4107           0           1    0.563779    0.495115     -0.25689    -1.93162    INPUT    dst_host_srv_rerror_rate
+attack_type    r2l              0           0        1126           0        0.96    0.041856    0.190847     4.416321    17.64443    INPUT    dst_host_srv_rerror_rate
+attack_type    u2r              0           0          52           0        0.25    0.019038    0.052141     2.886194    8.283914    INPUT    dst_host_srv_rerror_rate
+
+
+Data Role=TRAIN Variable=dst_host_srv_serror_rate
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role              Label
+
+_OVERALL_                       0           0      100000           0           1    0.206942    0.404568     1.449267    0.101493    INPUT    dst_host_srv_serror_rate
+attack_type    0             0.75           0          21        0.11           1    0.646667    0.385037     -0.46007    -1.70836    INPUT    dst_host_srv_serror_rate
+attack_type    dos              0           0      100000           0           1    0.411214    0.492002     0.361002    -1.86966    INPUT    dst_host_srv_serror_rate
+attack_type    norm             0           0       97278           0           1    0.001068    0.015724     46.05399     2406.09    INPUT    dst_host_srv_serror_rate
+attack_type    probe            0           0        4107           0           1    0.072854    0.258677     3.286216    8.837614    INPUT    dst_host_srv_serror_rate
+attack_type    r2l              0           0        1126           0           1    0.014609    0.081207     9.059003    92.17099    INPUT    dst_host_srv_serror_rate
+attack_type    u2r              0           0          52           0        0.25    0.004808    0.034669     7.211103          52    INPUT    dst_host_srv_serror_rate
+
+
+Data Role=TRAIN Variable=duration
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role      Label
+
+_OVERALL_                       0           0      100000           0       25602     3.71774    193.1853     74.67799    6474.372    INPUT    duration
+attack_type    0                0           0          21           0           0           0           0            .           .    INPUT    duration
+attack_type    dos              0           0      100000           0          14     0.00284    0.165808     65.46448    4558.857    INPUT    duration
+attack_type    norm             0           0       97278           0       58329    216.6573    1359.213     10.12029    144.4189    INPUT    duration
+attack_type    probe            0           0        4107           0       42448    485.0299    3758.148     8.417732    73.51821    INPUT    duration
+attack_type    r2l              0           0        1126           0       15168    559.7522    2108.337     4.614735    23.91946    INPUT    duration
+attack_type    u2r             45           0          52           0         708    80.94231    120.5109     3.212588    13.92224    INPUT    duration
+
+
+Data Role=TRAIN Variable=failed_logins
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role         Label
+
+_OVERALL_                       0           0      100000           0           5      0.0007    0.032856      75.4977    8434.859    INPUT    failed_logins
+attack_type    0                0           0          21           0           0           0           0            .           .    INPUT    failed_logins
+attack_type    dos              0           0      100000           0           0           0           0            .           .    INPUT    failed_logins
+attack_type    norm             0           0       97278           0           4    0.000185    0.020778     137.4955    21503.66    INPUT    failed_logins
+attack_type    probe            0           0        4107           0           0           0           0            .           .    INPUT    failed_logins
+attack_type    r2l              0           0        1126           0           5    0.049734    0.255108     8.846451      132.47    INPUT    failed_logins
+attack_type    u2r              0           0          52           0           1    0.019231    0.138675     7.211103          52    INPUT    failed_logins
+
+
+Data Role=TRAIN Variable=file_creations
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role         Label
+
+_OVERALL_                       0           0      100000           0          28     0.00283    0.160506     115.3822    15766.18    INPUT    file_creations
+attack_type    0                0           0          21           0           0           0           0            .           .    INPUT    file_creations
+attack_type    dos              0           0      100000           0           0           0           0            .           .    INPUT    file_creations
+attack_type    norm             0           0       97278           0          28    0.004718    0.202902      92.7501    10086.14    INPUT    file_creations
+attack_type    probe            0           0        4107           0           0           0           0            .           .    INPUT    file_creations
+attack_type    r2l              0           0        1126           0          21    0.031083    0.651775      30.0716    956.8388    INPUT    file_creations
+attack_type    u2r              0           0          52           0           4    0.788462    1.210032     1.805687    2.469622    INPUT    file_creations
+
+
+Data Role=TRAIN Variable=hot
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role     Label
+
+_OVERALL_                       0           0      100000           0          30     0.06613    0.710015     26.61308    908.1635    INPUT     hot 
+attack_type    0                0           0          21           0           0           0           0            .           .    INPUT     hot 
+attack_type    dos              0           0      100000           0           3     0.04127    0.283315     6.749317    43.67947    INPUT     hot 
+attack_type    norm             0           0       97278           0          30    0.044512    0.858464     25.65111    733.7119    INPUT     hot 
+attack_type    probe            0           0        4107           0           1    0.000974    0.031197      32.0078    1022.997    INPUT     hot 
+attack_type    r2l              0           0        1126           0          28    7.389876    11.94736     1.108183    -0.72765    INPUT     hot 
+attack_type    u2r              1           0          52           0           5    1.403846    1.537245     0.525207    -1.23156    INPUT     hot 
+
+
+Data Role=TRAIN Variable=num_access_files
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role          Label
+
+_OVERALL_                       0           0      100000           0           6     0.00294    0.060427     29.49561    1525.929    INPUT    num_access_files
+attack_type    0                0           0          21           0           0           0           0            .           .    INPUT    num_access_files
+attack_type    dos              0           0      100000           0           0           0           0            .           .    INPUT    num_access_files
+attack_type    norm             0           0       97278           0           8    0.005006    0.081274     27.63817    1547.361    INPUT    num_access_files
+attack_type    probe            0           0        4107           0           0           0           0            .           .    INPUT    num_access_files
+attack_type    r2l              0           0        1126           0           2    0.008881    0.102897     12.81779    183.8301    INPUT    num_access_files
+attack_type    u2r              0           0          52           0           1    0.019231    0.138675     7.211103          52    INPUT    num_access_files
+
+
+Data Role=TRAIN Variable=num_compromised
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role          Label
+
+_OVERALL_                       0           0      100000           0         767     0.03111     2.54625     281.4823    83086.18    INPUT    num_compromised
+attack_type    0                0           0          21           0           0           0           0            .           .    INPUT    num_compromised
+attack_type    dos              0           0      100000           0           1     0.02031    0.141059     6.801393    44.25983    INPUT    num_compromised
+attack_type    norm             0           0       97278           0         884    0.028537    4.046829     186.0511    37251.17    INPUT    num_compromised
+attack_type    probe            0           0        4107           0           0           0           0            .           .    INPUT    num_compromised
+attack_type    r2l              0           0        1126           0          38    0.068384    1.391956     22.83796    560.1972    INPUT    num_compromised
+attack_type    u2r              0           0          52           0           6    1.211538    1.672576      1.19399    0.283885    INPUT    num_compromised
+
+
+Data Role=TRAIN Variable=num_root
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role      Label
+
+_OVERALL_                       0           0      100000           0         857     0.02382    2.857694     277.9979    81651.02    INPUT    num_root
+attack_type    0                0           0          21           0           0           0           0            .           .    INPUT    num_root
+attack_type    dos              0           0      100000           0           0           0           0            .           .    INPUT    num_root
+attack_type    norm             0           0       97278           0         993    0.056087    4.529819     185.7486    37390.06    INPUT    num_root
+attack_type    probe            0           0        4107           0           0           0           0            .           .    INPUT    num_root
+attack_type    r2l              0           0        1126           0          54    0.098579    2.040492     23.00589    553.4795    INPUT    num_root
+attack_type    u2r              0           0          52           0          14    0.788462    2.303761     4.351802     22.0421    INPUT    num_root
+
+
+Data Role=TRAIN Variable=num_shells
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role       Label
+
+_OVERALL_                       0           0      100000           0           2     0.00024    0.017319     80.81196    7329.036    INPUT    num_shells
+attack_type    0                0           0          21           0           0           0           0            .           .    INPUT    num_shells
+attack_type    dos              0           0      100000           0           0           0           0            .           .    INPUT    num_shells
+attack_type    norm             0           0       97278           0           1    0.000442     0.02102     47.53261    2257.396    INPUT    num_shells
+attack_type    probe            0           0        4107           0           0           0           0            .           .    INPUT    num_shells
+attack_type    r2l              0           0        1126           0           2    0.003552    0.072943     22.79736     560.717    INPUT    num_shells
+attack_type    u2r              0           0          52           0           2    0.134615    0.444083      3.44879    11.51185    INPUT    num_shells
+
+
+Data Role=TRAIN Variable=rerror_rate
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role        Label
+
+_OVERALL_                       0           0      100000           0           1    0.026965     0.15912     5.835995    32.26705    INPUT    rerror_rate
+attack_type    0                0           0          21           0        0.67    0.031905    0.146206     4.582576          21    INPUT    rerror_rate
+attack_type    dos              0           0      100000           0           1    0.000881    0.019718     29.87224    1109.107    INPUT    rerror_rate
+attack_type    norm             0           0       97278           0           1    0.055941    0.229043     3.869469    12.99475    INPUT    rerror_rate
+attack_type    probe         0.86           0        4107           0           1    0.567159    0.456861      -0.3892    -1.77601    INPUT    rerror_rate
+attack_type    r2l              0           0        1126           0           1    0.045737    0.207406     4.354207    17.07844    INPUT    rerror_rate
+attack_type    u2r              0           0          52           0         0.5    0.009808    0.069324     7.206661    51.95589    INPUT    rerror_rate
+
+
+Data Role=TRAIN Variable=root_shell
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role       Label
+
+_OVERALL_                       0           0      100000           0           1     0.00029    0.017027     58.69736    3443.448    INPUT    root_shell
+attack_type    0                0           0          21           0           0           0           0            .           .    INPUT    root_shell
+attack_type    dos              0           0      100000           0           0           0           0            .           .    INPUT    root_shell
+attack_type    norm             0           0       97278           0           1    0.000236    0.015375     65.01237    4224.696    INPUT    root_shell
+attack_type    probe            0           0        4107           0           0           0           0            .           .    INPUT    root_shell
+attack_type    r2l              0           0        1126           0           1    0.005329    0.072835     13.60754    183.4911    INPUT    root_shell
+attack_type    u2r              0           0          52           0           1         0.5    0.504878            0    -2.08163    INPUT    root_shell
+
+
+Data Role=TRAIN Variable=same_srv_rate
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role         Label
+
+_OVERALL_                       1           0      100000           0           1    0.800332    0.383679     -1.41427    0.022284    INPUT    same_srv_rate
+attack_type    0                1           0          21        0.01           1    0.920952    0.254733     -3.18595    9.506035    INPUT    same_srv_rate
+attack_type    dos              1           0      100000           0           1    0.615041    0.461624     -0.37232    -1.84836    INPUT    same_srv_rate
+attack_type    norm             1           0       97278           0           1    0.985502    0.092276     -6.72927    46.22377    INPUT    same_srv_rate
+attack_type    probe            1           0        4107           0           1    0.587711    0.474969     -0.34687    -1.81482    INPUT    same_srv_rate
+attack_type    r2l              1           0        1126         0.5           1    0.997043    0.037701     -12.8237    164.0351    INPUT    same_srv_rate
+attack_type    u2r              1           0          52        0.01           1    0.931538    0.216382     -3.49229    12.09367    INPUT    same_srv_rate
+
+
+Data Role=TRAIN Variable=serror_rate
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role        Label
+
+_OVERALL_                       0           0      100000           0           1    0.207396    0.404452     1.446736    0.096856    INPUT    serror_rate
+attack_type    0                1           0          21        0.33           1    0.968095    0.146206     -4.58258          21    INPUT    serror_rate
+attack_type    dos              0           0      100000           0           1    0.411266     0.49201     0.360655    -1.86983    INPUT    serror_rate
+attack_type    norm             0           0       97278           0           1    0.001586    0.027868     26.76438    842.4299    INPUT    serror_rate
+attack_type    probe            0           0        4107           0           1    0.070789    0.175653     4.160922    18.37561    INPUT    serror_rate
+attack_type    r2l              0           0        1126           0           1    0.011403    0.098889     9.068755    83.50419    INPUT    serror_rate
+attack_type    u2r              0           0          52           0        0.99    0.038077    0.192242     4.943767     23.3376    INPUT    serror_rate
+
+
+Data Role=TRAIN Variable=src_bytes
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role       Label
+
+_OVERALL_                     244           0      100000           0    6.9338E8    8783.784     2192767     316.1731    99976.92    INPUT    src_bytes
+attack_type    0                0           0          21           0           0           0           0            .           .    INPUT    src_bytes
+attack_type    dos           1032           0      100000           0       54540    1720.982    7714.029     6.654983    42.53454    INPUT    src_bytes
+attack_type    norm           231           0       97278           0     2194619    1157.048    34226.12     62.27468    3964.246    INPUT    src_bytes
+attack_type    probe            0           0        4107           0    6.9338E8    168832.7    10819476     64.08588        4107    INPUT    src_bytes
+attack_type    r2l            334           0        1126           0     5135678    271972.6     1146287     4.003602    14.07615    INPUT    src_bytes
+attack_type    u2r            269           0          52           0        6274    906.2308     1188.26     2.052716    6.638903    INPUT    src_bytes
+
+
+Data Role=TRAIN Variable=srv_count
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role       Label
+
+_OVERALL_                      11           0      100000           0         511    107.1448     196.404     1.553973    0.442811    INPUT    srv_count
+attack_type    0                2           0          21           1           2    1.809524    0.402374     -1.70043    0.975232    INPUT    srv_count
+attack_type    dos            510           0      100000           1         511    291.5241    248.0971     -0.24954    -1.93525    INPUT    srv_count
+attack_type    norm             4           0       97278           0         510    10.93601    21.80402     7.320737    80.17682    INPUT    srv_count
+attack_type    probe            1           0        4107           0         144    7.469686    14.43211      2.97806    12.93875    INPUT    srv_count
+attack_type    r2l              1           0        1126           1         163    2.340142    11.99195     12.00463    145.2121    INPUT    srv_count
+attack_type    u2r              1           0          52           1           3    1.269231    0.629827     2.174779    3.295719    INPUT    srv_count
+
+
+Data Role=TRAIN Variable=srv_diff_host_rate
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role           Label
+
+_OVERALL_                       0           0      100000           0           1    0.086857    0.227581     3.153279    9.213504    INPUT    srv_diff_host_rate
+attack_type    0                1           0          21           0           1    0.809524    0.402374     -1.70043    0.975232    INPUT    srv_diff_host_rate
+attack_type    dos              0           0      100000           0           1     0.00276    0.040827      16.5953    302.0602    INPUT    srv_diff_host_rate
+attack_type    norm             0           0       97278           0           1    0.133871    0.278222     2.343629    4.282576    INPUT    srv_diff_host_rate
+attack_type    probe            0           0        4107           0           1    0.222345    0.415734     1.335814     -0.2148    INPUT    srv_diff_host_rate
+attack_type    r2l              0           0        1126           0           1     0.01516    0.112128     8.012043    65.02178    INPUT    srv_diff_host_rate
+attack_type    u2r              0           0          52           0           0           0           0            .           .    INPUT    srv_diff_host_rate
+
+
+Data Role=TRAIN Variable=srv_rerror_rate
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role          Label
+
+_OVERALL_                       0           0      100000           0           1     0.02829    0.160236     5.758725      31.684    INPUT    srv_rerror_rate
+attack_type    0                0           0          21           0           0           0           0            .           .    INPUT    srv_rerror_rate
+attack_type    dos              0           0      100000           0           1     0.00211    0.028975     17.15846    361.3402    INPUT    srv_rerror_rate
+attack_type    norm             0           0       97278           0           1    0.056237    0.227851     3.871254    13.05993    INPUT    srv_rerror_rate
+attack_type    probe            1           0        4107           0           1    0.565332    0.495126     -0.26338    -1.92901    INPUT    srv_rerror_rate
+attack_type    r2l              0           0        1126           0           1    0.045986    0.207373     4.352795    17.07048    INPUT    srv_rerror_rate
+attack_type    u2r              0           0          52           0           1    0.019231    0.138675     7.211103          52    INPUT    srv_rerror_rate
+
+
+Data Role=TRAIN Variable=srv_serror_rate
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role          Label
+
+_OVERALL_                       0           0      100000           0           1     0.20751    0.404695     1.445218    0.092226    INPUT    srv_serror_rate
+attack_type    0                1           0          21           1           1           1           0            .           .    INPUT    srv_serror_rate
+attack_type    dos              0           0      100000           0           1    0.411215    0.491986      0.36087    -1.86958    INPUT    srv_serror_rate
+attack_type    norm             0           0       97278           0           1    0.001794    0.026578     25.78229    822.5896    INPUT    srv_serror_rate
+attack_type    probe            0           0        4107           0           1     0.07309     0.25908     3.279322    8.792077    INPUT    srv_serror_rate
+attack_type    r2l              0           0        1126           0           1    0.010648    0.090837     9.027966    83.98386    INPUT    srv_serror_rate
+attack_type    u2r              0           0          52           0           0           0           0            .           .    INPUT    srv_serror_rate
+
+
+Data Role=TRAIN Variable=wrng_frags
+
+               Target                                 Non                                        Standard
+  Target       Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role       Label
+
+_OVERALL_                       0           0      100000           0           3     0.00633    0.134574     21.85647    480.7182    INPUT    wrng_frags
+attack_type    0                0           0          21           0           0           0           0            .           .    INPUT    wrng_frags
+attack_type    dos              0           0      100000           0           3     0.01283    0.190383     15.32566    235.9554    INPUT    wrng_frags
+attack_type    norm             0           0       97278           0           0           0           0            .           .    INPUT    wrng_frags
+attack_type    probe            0           0        4107           0           0           0           0            .           .    INPUT    wrng_frags
+attack_type    r2l              0           0        1126           0           0           0           0            .           .    INPUT    wrng_frags
+attack_type    u2r              0           0          52           0           0           0           0            .           .    INPUT    wrng_frags
+ 
+                                                                                                                                                                                                                                                                
+ 
+Chi-Square Statistics
+(maximum 500 observations printed)
+
+Data Role=TRAIN Target=attack_type
+
+Input             Chi-Square     Df      Prob
+
+attack_name       500000.000     95    <.0001
+class             100000.000      5    <.0001
+land              100000.000      5    <.0001
+logged_in         70232.7208      5    <.0001
+service           179495.279    310    <.0001
+flag              81536.6715     50    <.0001
+protocol          31591.1110     10    <.0001
+is_guest_login      365.0872      5    <.0001
